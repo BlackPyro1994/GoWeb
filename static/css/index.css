@@ -1,0 +1,21 @@
+.margin-top-fullpage {
+    margin-top: 2%;
+}
+.title {
+    color: #ff6448;
+    font-weight: bold;
+    font-size: 46px;
+}
+
+.mid {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.button {
+    color: white;
+    background: #ff6448;
+    border-radius: 12px;
+    border: black solid 1px;
+}
+

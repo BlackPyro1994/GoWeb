@@ -5,16 +5,20 @@
     <title>Meine Geräte</title>
 
     <link rel="stylesheet" href="css/bootstrap-4.1.0.css">
-    <link rel="stylesheet" href="css/fontawesome-all.css">
     <link rel="stylesheet" href="css/meinegeräte.css">
+    <link rel="stylesheet" href="css/fontawesome-all.css">
 
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap-4.1.0.js"></script>
 
 </head>
 <body>
+
 <div class="container">
-    <div class="row bottom-border">
+
+    <!--▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒-->
+
+    <div class="row bottom-border cursiv-text bold-text">
         <div class="col-md-3">
             Equipment
         </div>
@@ -25,14 +29,16 @@
             Anzahl
         </div>
         <div class="col-md-2">
-            Rückgabe bis
+            <p class="centered-text">Rückgabe bis</p>
         </div>
         <div class="col-md-2">
-            Löschen
+            <p class="centered-text">Löschen</p>
         </div>
     </div>
 
-    <div class="row">
+    <!--▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒-->
+
+    <div class="row equipment-row">
         <div class="col-md-3">
             <div class="row">
                 <div class="col-md-6">
@@ -40,10 +46,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <p>KÄSE</p>
+                        <p class="bold-medium-text ">Großer KÄSE</p>
                     </div>
                     <div class="row">
-                        <p>KÄSE</p>
+                        <p class="small-text cursiv-text">Kleiner KÄSE</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +58,7 @@
             <p>aasdasdasdasdasdaasdasdasdadasdasdasdasdasdasdasdasdposjdsjipdfjpasdfjpasdpjop</p>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 mr-auto">
             <select class="form-control">
                 <option>1</option>
                 <option>2</option>
@@ -61,16 +67,25 @@
 
         </div>
         <div class="col-md-2">
-            <div class="row">Rückgabe:</div>
-            <div class="row">25.05.2018</div>
+            <div class="row cursiv-text">Rückgabe:</div>
+            <div class="row red-text cursiv-text">25.05.2018</div>
         </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-default">
-                <i class="fas fa-camera-retro"></i>
+            <button type="button" class="btn btn-default bg-dark trash-button">
+                <i class="fas fa-trash text-white"></i>
             </button>
         </div>
     </div>
 
+    <!--▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒-->
+
+    <div class="row">
+        <div class="col-md-3 offset-md-8">
+            <button type="button" class="btn btn-default red-background ausleihen-button">
+                Jetzt ausleiehen!
+            </button>
+        </div>
+    </div>
 
 </div>
 </body>

@@ -1,0 +1,25 @@
+.bottom-border {
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+img {
+    max-width: 60%;
+    margin: 5%;
+    /*max-height: 100%;*/
+    /*width: 60%;*/
+    /*height: 100%;*/
+}
+
+.text-spalte
+{
+    word-break: break-all;
+    display: inline-block
+}
+
+i {
+    width: 1em;
+    height: 1em;
+    display:block;
+    cursor: pointer;
+}

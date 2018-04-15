@@ -21,6 +21,10 @@ a:active {
     font-size: 50px;
 }
 
+a.title:link {
+    color: #ff6448;
+}
+
 .menu-item {
     font-size: 20px;
 }

@@ -72,47 +72,126 @@ i {
     margin-bottom: 1%;
 }
 
-.centered-text
-{
+.centered-text {
     text-align: center;
 }
 
-.minimal-margin
-{
-    margin:0%;
+.minimal-margin {
+    margin: 0%;
 }
 
-.select-dropdown
-{
+.select-dropdown {
     width: 40%;
     margin-left: 40%;
 }
 
-.equipment-image
-{
+.equipment-image {
     border-style: solid;
     border-width: 1pt;
     margin: 3%;
     padding: 3%;
 }
 
-.vertical-label-center
-{
+.vertical-label-center {
     padding-top: 10%;
 }
 
-.equipment-label p
-{
+.equipment-label p {
     padding-top: 5%;
 }
 
-button.red-background
-{
+button.red-background {
     width: 30%;
     height: 25%;
 }
 
-.entferne-button
-{
+.entferne-button {
     margin-left: 35%;
+}
+
+.fa-button {
+    border-radius: 80px;
+    width: 70%;
+    margin-left: 15%;
+    color: white;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+}
+
+.add-button {
+    border-radius: 70px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+    background-color: #ff6246;
+}
+
+div.search-bar {
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+    background: black;
+}
+
+input.search-bar {
+    border-radius: 70px;
+    width: 70%;
+    border-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+    background: white;
+    outline: none;
+    padding-left: 3%;
+}
+
+select.search-bar {
+    color: white;
+    border-radius: 70px;
+    width: 30%;
+    border-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+    background: black;
+    outline: none;
+}
+
+search-bar:focus {
+    outline: none;
+    background: black;
+}
+
+option {
+    color: white;
+    border-radius: 70px;
+    width: 30%;
+    border-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
+    background: black;
+}
+
+.search-row {
+    height: 30%;
+}
+
+select.form-control.search-bar {
+    color: white;
+    outline: none;
+    background: black;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+.selectBox {
+    border-radius: 4px;
+    border: 1px solid #AAAAAA;
 }

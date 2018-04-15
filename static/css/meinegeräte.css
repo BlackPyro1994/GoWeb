@@ -1,6 +1,8 @@
 .bottom-border {
     border-bottom-style: solid;
-    border-width: 1px;
+    border-width: 1pt;
+    margin-top: 1%;
+    padding-bottom: 1%;
 }
 
 img {
@@ -11,8 +13,7 @@ img {
     /*height: 100%;*/
 }
 
-.text-spalte
-{
+.text-spalte {
     word-break: break-all;
     display: inline-block
 }
@@ -20,6 +21,59 @@ img {
 i {
     width: 1em;
     height: 1em;
-    display:block;
+    display: block;
     cursor: pointer;
+}
+
+.red-text {
+    color: #ff6246;
+}
+
+.red-background {
+    background-color: #ff6246;
+}
+
+.small-text {
+    font-size: small;
+}
+
+.cursiv-text {
+    font-style: italic;
+}
+
+.semi-bold-text {
+    font-weight: lighter;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.bold-medium-text {
+    font-weight: bolder;
+    font-size: medium;
+}
+
+.trash-button {
+    border-radius: 20px;
+    padding: 0px;
+    height: 50%;
+    width: 40%;
+}
+
+.ausleihen-button {
+    border-radius: 80px;
+    width: 100%;
+}
+
+.equipment-row {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.centered-text
+{
+    /*padding-left: 25%;*/
+    /*text-align: left;*/
+    text-align: center;
 }

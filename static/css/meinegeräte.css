@@ -1,16 +1,11 @@
 .bottom-border {
     border-bottom-style: solid;
     border-width: 1pt;
-    margin-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 0%;
 }
 
 img {
-    max-width: 60%;
-    margin: 5%;
-    /*max-height: 100%;*/
-    /*width: 60%;*/
-    /*height: 100%;*/
+    max-width: 80%;
 }
 
 .text-spalte {
@@ -63,7 +58,13 @@ i {
 
 .ausleihen-button {
     border-radius: 80px;
-    width: 100%;
+    width: 70%;
+    margin-left: 15%;
+    color: white;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
 }
 
 .equipment-row {
@@ -73,7 +74,34 @@ i {
 
 .centered-text
 {
-    /*padding-left: 25%;*/
-    /*text-align: left;*/
     text-align: center;
+}
+
+.minimal-margin
+{
+    margin:0%;
+}
+
+.select-dropdown
+{
+    width: 40%;
+    margin-left: 40%;
+}
+
+.equipment-image
+{
+    border-style: solid;
+    border-width: 1pt;
+    margin: 3%;
+    padding: 3%;
+}
+
+.vertical-label-center
+{
+    padding-top: 10%;
+}
+
+.equipment-label p
+{
+    padding-top: 5%;
 }

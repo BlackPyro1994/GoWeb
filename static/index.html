@@ -1,51 +1,110 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Startseite</title>
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- META TAGS -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="/js/bootstrap.min.js"></script>
-</head>
-<body>
-<!-- FULL PAGE -->
-<div class="container margin-top-fullpage">
-    <!-- MENÜ BAR -->
-    <div class="container">
-        <!-- Menü -->
-        <div class="row">
-            <div class="col-md-4">
-                <h1 class="title">borgdir.media</h1>
+        <!-- BOOTSTRAP CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/carousel.css">
+        <link rel="stylesheet" href="/css/fontawesome-all.css">
+
+        <title>borgdir.media - Startseite</title>
+
+    </head>
+    <body>
+        <!-- MENÜ BAR -->
+        <div class="container-fluid">
+            <div class="d-flex flex-row">
+                <div class="p-2 title">
+                    borgdir.media
+                </div>
+                <div class="p-2 align-self-end menü-item">
+                    <a href="#">Equipment</a>
+                </div>
+                <div class ="p-2 align-self-end menü-item separator">
+                    |
+                </div>
+                <div class="p-2 align-self-end menü-item">
+                    <a href="#">Login</a>
+                </div>
+                <div class="p-2 ml-auto align-self-center">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- END MENÜ BAR -->
-    <!-- MIDDLE CONTENT -->
-    <div class="container mid">
-        <!-- WELCOME -->
-        <div class="row">
-            <div class="col-md-12">
-                <h4>Willkommen bei</h4>
-                <h1 class="title">borgdir.media</h1>
-                </br>
-                </br>
+        <!-- CONTENT -->
+        <div class="container mid-content">
+            <div class="row">
+                <div class="col big-bold-text">
+                    Willkommen bei
+                </div>
+            </div>
+            <div class="row">
+                <div class="col title">
+                    borgdir.media
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <button type="button" class="btn button-startpage btn-block">Login</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn button-startpage btn-block">Registrieren</button>
+                </div>
+            </div>
+
+            <!-- CAROUSEL -->
+            <div class="container-fluid mid-content">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                        <div class="carousel-item col-md-3 active">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400/?text=1" alt="slide 1">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=2" alt="slide 2">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=3" alt="slide 3">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=4" alt="slide 4">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=5" alt="slide 5">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=6" alt="slide 6">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=7" alt="slide 7">
+                        </div>
+                        <div class="carousel-item col-md-3">
+                            <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=8" alt="slide 8">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <i class="fas fa-chevron-left fa-lg text-muted"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+                        <i class="fas fa-chevron-right fa-lg text-muted"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- BUTTONS -->
-        <div class="row">
-            <div class="offset-md-4 col-md-2">
-                <button class="btn-block button btn" type="button">Login</button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn-block button btn" type="button">Registrieren</button>
-            </div>
-        </div>
-        <!-- CARUSSEL -->
-        <div class="row">
-        </div>
-    </div>
-    <!-- END MIDDLE CONTENT -->
-</div>
-<!-- END FULL PAGE -->
-</body>
+
+
+        <!-- JQUERY AND JAVASCRIPT -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <!-- CUSTOM JS -->
+        <script src="/js/index.js"></script>
+    </body>
 </html>

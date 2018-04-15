@@ -48,6 +48,30 @@ a.title:link {
     background: #ff6448;
     border-radius: 15px;
 }
+
+.button-loeschen {
+    color: #ffffff;
+    background: #464646;
+    border-radius: 15px;
+}
+
+.active {
+    color: lawngreen;
+}
+
+.user {
+    color: #ff6448;
+}
+
+.user-icon {
+    font-size: 40px;
+}
+
+.img-pb {
+    max-height: 200px;
+    max-width: 300px;
+}
+
 .background {
     background: gray;
 }

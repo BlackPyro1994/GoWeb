@@ -16,6 +16,11 @@ a:active {
     color: #ff6448;
 }
 
+a.title {
+    color: #ff6448;
+    font-size: 50px;
+}
+
 .title {
     color: #ff6448;
     font-size: 50px;
@@ -79,6 +84,3 @@ a.title:link {
 .background {
     background: gray;
 }
-
-
-

@@ -19,36 +19,107 @@
     <body>
         <!-- MENÜ BAR -->
         <div class="container-fluid">
-            <div class="d-flex flex-row align-items-baseline">
-                <div class="p-2 title">
+            <div class="d-flex flex-row">
+                <div class="p-2 title align-self-baseline">
                     <a class="title" href="index.html">borgdir.media</a>
                 </div>
-                <div class="p-2 menu-item">
+                <div class="p-2 menu-item align-self-baseline">
                     <a href="#">Equipment</a>
                 </div>
-                <div class ="p-2 menu-item separator">
+                <div class ="p-2 menu-item separator align-self-baseline">
                     |
                 </div>
-                <div class="p-2 menu-item">
+                <div class="p-2 menu-item align-self-baseline">
                     <a href="login.html">Login</a>
                 </div>
-                <div class ="p-2 menu-item separator">
+                <div class ="p-2 menu-item separator align-self-baseline">
                     |
                 </div>
-                <div class="p-2 menu-item">
+                <div class="p-2 menu-item align-self-baseline">
                     <a href="#">Logout</a>
                 </div>
-                <div class="p-2">
+                <div class="p-2 align-self-baseline">
                     <i class="fas fa-shopping-cart fa-lg"></i>
                 </div>
-                <div class="p-2 menu-item ml-auto">
-                    <a href="profil_bearbeiten.html">Max Mustermann</a>
+                <div class="p-2 ml-auto align-self-center">
+                    <div class="p-2">
+                        <a href="profil_bearbeiten.html">Max Mustermann</a>
+                        <p class="text-right user">Benutzer</p>
+                    </div>
+                </div>
+                <div class="p-2 ml-0 align-self-center user-icon">
                     <a href="profil_bearbeiten.html"><i class="fas fa-user-circle fa-lg"></i></a>
                 </div>
             </div>
         </div>
         <!-- CONTENT -->
-
+        <div class="container my-3">
+            <div class="row">
+                <div class="col menu-item">
+                    Profil bearbeiten
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Status: <span class="active">aktiv</span>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6"   >
+                            <div class="form-group">
+                                <label for="user">Benutzername:</label>
+                                <input type="text" class="form-control" id="user">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"   >
+                            <div class="form-group">
+                                <label for="mail">E-Mail:</label>
+                                <input type="text" class="form-control" id="mail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"   >
+                            <div class="form-group">
+                                <label for="npsw">Neues Passwort:</label>
+                                <input type="password" class="form-control" id="npsw">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"   >
+                            <div class="form-group">
+                                <label for="npsw">Neues Passwort wiederholen:</label>
+                                <input type="password" class="form-control" id="npsw">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form action="#"> <input type="submit" class="btn button-startpage" value="Änderungen Speichern" /></form>
+                        </div>
+                        <div class="col">
+                            <form action="#"> <input type="submit" class="btn button-loeschen" value="Konto löschen" /></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="d-flex flex-column">
+                        Profilbild
+                    </div>
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid" src="//placehold.it/600x400?text=Profilbild" alt="profilbild">
+                    </div>
+                    <div class="d-flex flex-column my-2 text-right">
+                        <form action="#"> <input type="submit" class="btn button-startpage" value="Profilbild ändern" /></form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- JQUERY AND JAVASCRIPT -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

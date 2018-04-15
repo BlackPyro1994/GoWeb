@@ -105,3 +105,14 @@ i {
 {
     padding-top: 5%;
 }
+
+button.red-background
+{
+    width: 30%;
+    height: 25%;
+}
+
+.entferne-button
+{
+    margin-left: 35%;
+}

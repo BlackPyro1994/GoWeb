@@ -9,9 +9,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
         <!-- CUSTOM CSS -->
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/carousel.css">
-        <link rel="stylesheet" href="/css/fontawesome-all.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/carousel.css">
+        <link rel="stylesheet" href="./css/fontawesome-all.css">
 
         <title>borgdir.media - Startseite</title>
 
@@ -19,17 +19,17 @@
     <body>
         <!-- MENÜ BAR -->
         <div class="container-fluid">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row align-items-baseline">
                 <div class="p-2 title">
                     borgdir.media
                 </div>
-                <div class="p-2 align-self-end menü-item">
+                <div class="p-2 menu-item">
                     <a href="#">Equipment</a>
                 </div>
-                <div class ="p-2 align-self-end menü-item separator">
+                <div class ="p-2 menu-item separator">
                     |
                 </div>
-                <div class="p-2 align-self-end menü-item">
+                <div class="p-2 menu-item">
                     <a href="#">Login</a>
                 </div>
                 <div class="p-2 ml-auto align-self-center">
@@ -51,10 +51,10 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-2">
-                    <button type="button" class="btn button-startpage btn-block">Login</button>
+                    <form action="login.html"> <input type="submit" class="btn button-startpage btn-block" value="Login" /></form>
                 </div>
                 <div class="col-md-2">
-                    <form action="registrieren.html"><input type="submit" class="btn button-startpage btn-block" value="Registrieren" /></form>
+                    <form action="registrieren.html"> <input type="submit" class="btn button-startpage btn-block" value="Registrieren" /></form>
                 </div>
             </div>
 
@@ -105,6 +105,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <!-- CUSTOM JS -->
-        <script src="/js/index.js"></script>
+        <script src="./js/index.js"></script>
     </body>
 </html>

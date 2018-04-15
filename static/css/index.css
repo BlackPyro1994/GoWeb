@@ -21,7 +21,7 @@ a:active {
     font-size: 50px;
 }
 
-.menü-item {
+.menu-item {
     font-size: 20px;
 }
 
@@ -41,7 +41,6 @@ a:active {
 
 .button-startpage {
     color: #ffffff;
-    border: black solid 1px;
     background: #ff6448;
     border-radius: 15px;
 }

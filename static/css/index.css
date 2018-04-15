@@ -67,6 +67,10 @@ a.title:link {
     font-size: 40px;
 }
 
+.admin-icon {
+    font-size: 150px;
+}
+
 .img-pb {
     max-height: 200px;
     max-width: 300px;

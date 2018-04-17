@@ -85,7 +85,7 @@ a.title:link {
     background: gray;
 }
 .spinner {
-    width: 100px;
+    width: 90%;
 }
 .spinner input {
     text-align: right;
@@ -119,6 +119,3 @@ a.title:link {
     top: 0;
     left: 4px;
 }
-
-
-

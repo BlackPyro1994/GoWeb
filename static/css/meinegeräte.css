@@ -13,6 +13,12 @@ img {
     display: inline-block
 }
 
+.text-zeile
+{
+    word-break: keep-all;
+    display: flow;
+}
+
 i {
     width: 1em;
     height: 1em;
@@ -100,13 +106,22 @@ i {
     padding-top: 5%;
 }
 
+/*
 button.red-background {
     width: 30%;
     height: 25%;
 }
 
+*/
+
 .entferne-button {
-    margin-left: 35%;
+    border-radius: 70px;
+    width: 80%;
+    margin-left: 10%;
+    height: 30%;
+    border-bottom-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
 }
 
 .fa-button {
@@ -194,4 +209,13 @@ select.form-control.search-bar {
 .selectBox {
     border-radius: 4px;
     border: 1px solid #AAAAAA;
+}
+
+.warenkorb-hinzufügen {
+    border-radius: 70px;
+    width: 80%;
+    height: 60%;
+    border-bottom-style: solid;
+    border-width: 1pt;
+    border-color: #0b2e13;
 }

@@ -32,10 +32,12 @@ func index(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile: false }
 
-	tmpl := template.Must(template.ParseFiles("template/index.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/layout.html", "template/header.html", "template/index.html"))
 
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "index", p)
+
 
 }
 
@@ -279,7 +281,6 @@ func main() {
 	http.HandleFunc("/cart", cart)
 
 	fs := http.FileServer(http.Dir("./"))
-
 	http.Handle("/static/", fs)
 
 	http.ListenAndServe(":80", nil)

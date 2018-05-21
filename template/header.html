@@ -7,12 +7,42 @@
         <div class="p-2 menu-item">
             <a href="equipment.html">{{.Item1}}</a>
         </div>
+        {{if .Item2}}
         <div class ="p-2 menu-item separator">
             |
         </div>
+        {{end}}
         <div class="p-2 menu-item">
             <a href="login.html">{{.Item2}}</a>
         </div>
+        {{if .Item3}}
+            <div class ="p-2 menu-item separator">
+                |
+            </div>
+        {{end}}
+        {{if .Basket}}
+            <div class="p-2 align-self-baseline">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+            </div>
+        {{end}}
+        {{if .EmptySide}}
+        {{else}}
+            {{if .Profil}}
+                <div class="p-2 ml-auto align-self-center">
+                    <div class="p-2">
+                        <a href="profil_bearbeiten.html">{{.Name}}</a>
+                        <p class="text-right user">{{.Type}}</p>
+                    </div>
+                </div>
+                <div class="p-2 ml-0 align-self-center user-icon">
+                    <a href="profil_bearbeiten.html"><i class="fas fa-user-circle fa-lg"></i></a>
+                </div>
+            {{else}}
+                <div class="p-2 ml-auto align-self-center user-icon">
+                    <a href="warenkorb.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                </div>
+            {{end}}
+    {{end}}
     </div>
 </div>
 

@@ -1,77 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>borgdir.media - Equipment</title>
+{{define "equipment"}}
 
-    <link rel="stylesheet" href="../static/css/bootstrap-4.1.0.css">
-    <link rel="stylesheet" href="../static/css/meinegeräte.css">
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/fontawesome-all.css">
-
-
-    <script src="../static/js/jquery-3.3.1.js"></script>
-    <script src="../static/js/bootstrap-4.1.0.js"></script>
-
-</head>
-<body>
-
-<!-- MENÜ BAR -->
-<div class="container-fluid">
-    <div class="d-flex flex-row">
-        <div class="p-2 title align-self-baseline">
-            <a class="title" href="layout.html">borgdir.media</a>
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="equipment.html">Equipment</a>
-        </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
-            |
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="meinegeräte.html">Meine Geräte</a>
-        </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
-            |
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="#">Logout</a>
-        </div>
-        <div class="p-2 align-self-baseline">
-            <i class="fas fa-shopping-cart fa-lg"></i>
-        </div>
-        <div class="p-2 ml-auto align-self-center">
-            <div class="p-2">
-                <a href="profile.html">Max Mustermann</a>
-                <p class="text-right user">Benutzer</p>
-            </div>
-        </div>
-        <div class="p-2 ml-0 align-self-center user-icon">
-            <a href="profile.html"><i class="fas fa-user-circle fa-lg"></i></a>
-        </div>
-    </div>
-</div>
-
-<!--▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒-->
-
-<div class="container my-3">
-
-    <h4 class="">Equipment</h4>
-
-    <br>
-
-    <div class="row search-row">
-
-        <div class="col-md-1 offset-md-9">
+<div class="container mt-5">
+    <h4 class="mr-0">Equipment</h4>
+    <div class="row">
+        <div class="col-md-1 ml-auto">
             <p class="minimal-margin">Kategorie</p>
         </div>
-
-        <div class="col-md-2 offset-md-0 text-lg-right">
+        <div class="col-md-2 text-lg-right">
             <p class="minimal-margin">Sortieren nach:</p>
         </div>
-
     </div>
-    <div class="row search-row">
+    <div class="row mt-1">
         <div class="col-md-3 offset-md-7">
             <div class="row">
                 <input class="search-bar" id="input1" type="text" placeholder="Suche">
@@ -93,13 +32,8 @@
         </div>
 
     </div>
-
-
-    <!--▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒-->
-
-    <br>
-
-    <div class="row equipment-row">
+    
+    <div class="row mt-5">
 
         <div class="col-md-6">
             <div class="row">
@@ -111,14 +45,15 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                        <div class="col">
+                            <button type="button" class="btn btn-block warenkorb-hinzufuegen red-background"></button>
                         </div>
-                        <div class="col-md-6 text-lg-right red-text">
+                        <div class="col text-lg-right red-text">
                             <p>entliehen</p>
                         </div>
                     </div>
@@ -127,7 +62,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
 
             </div>
@@ -140,15 +75,16 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                            <button type="button" class="btn red-background"></button>
                         </div>
                         <div class="col-md-6 text-lg-right">
-                            <p>3 verfügbar</p>
+                            <p>3 verf uegbar</p>
                         </div>
                     </div>
 
@@ -156,7 +92,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
 
             </div>
@@ -169,12 +105,13 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                            <button type="button" class="btn red-background "></button>
                         </div>
                         <div class="col-md-6 text-lg-right red-text">
                             <p>entliehen</p>
@@ -185,7 +122,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
 
             </div>
@@ -200,12 +137,13 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                            <button type="button" class="btn red-background "></button>
                         </div>
                         <div class="col-md-6 text-lg-right red-text">
                             <p>entliehen</p>
@@ -216,7 +154,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
 
             </div>
@@ -229,12 +167,13 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                            <button type="button" class="btn red-background "></button>
                         </div>
                         <div class="col-md-6 text-lg-right red-text">
                             <p>entliehen</p>
@@ -245,7 +184,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
 
             </div>
@@ -258,32 +197,24 @@
                     </div>
 
                     <div class="row text-spalte">
-                        <p>****************************************************************************************************************************************</p>
+                        <p>
+                            ****************************************************************************************************************************************</p>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn red-background warenkorb-hinzufügen"></button>
+                            <button type="button" class="btn red-background "></button>
                         </div>
                         <div class="col-md-6 text-lg-right red-text">
                             <p>vorgemerkt</p>
                         </div>
                     </div>
-
-
                 </div>
-
                 <div class="col-md-3">
-                    <img class="equipment-image" src="../static/images/x.png">
+                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
-
             </div>
         </div>
-
-
     </div>
-
 </div>
-
-</body>
-</html>
+{{end}}

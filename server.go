@@ -98,8 +98,9 @@ func equipment(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile: true }
 
-	tmpl := template.Must(template.ParseFiles("template/equipment.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "equipment", p)
 
@@ -179,8 +180,8 @@ func admin(w http.ResponseWriter, r *http.Request) {
 		Item2: "Kunden",
 		Item3: "Logout",
 		Basket: false,
-		Name: "",
-		Type: "",
+		Name: "Peter",
+		Type: "Verleiher",
 		EmptySide: false,
 		Profile: true }
 

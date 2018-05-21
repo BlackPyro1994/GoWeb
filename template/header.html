@@ -1,35 +1,52 @@
-{{ define "header"}}
-
+{{define "header"}}
 <div class="container-fluid">
-    <div class="d-flex flex-row">
-        <div class="p-2 title align-self-baseline">
-            <a class="title" href="index.html">borgdir.media</a>
+    <div class="d-flex flex-row align-items-baseline">
+        <div class="p-2 title">
+            <a class="title" href="index.html">{{.Title}}</a>
         </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="equipment.html">Equipment</a>
+        <div class="p-2 menu-item">
+            <a href="equipment.html">{{.Item1}}</a>
         </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
+        <div class ="p-2 menu-item separator">
             |
         </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="kunden.html">Kunden</a>
-        </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
-            |
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="#">Logout</a>
-        </div>
-        <div class="p-2 ml-auto align-self-center">
-            <div class="p-2">
-                <a href="profil_bearbeiten.html">Peter Müller</a>
-                <p class="text-right user">Verleiher</p>
-            </div>
-        </div>
-        <div class="p-2 ml-0 align-self-center user-icon">
-            <a href="profil_bearbeiten.html"><i class="fas fa-user-circle fa-lg"></i></a>
+        <div class="p-2 menu-item">
+            <a href="login.html">{{.Item2}}</a>
         </div>
     </div>
 </div>
 
-{{ end }}
+{{end}}
+<!--
+<div class="container-fluid">
+    <div class="d-flex flex-row">
+        <div class="p-2 title align-self-baseline">
+            <a class="title" href="index.html">{{.Title}}</a>
+        </div>
+        <div class="p-2 menu-item align-self-baseline">
+            <a href="equipment.html">{{.Item1}}</a>
+        </div>
+        <div class ="p-2 menu-item separator align-self-baseline">
+            |
+        </div>
+        <div class="p-2 menu-item align-self-baseline">
+            <a href="kunden.html">{{.Item2}}</a>
+        </div>
+        <div class ="p-2 menu-item separator align-self-baseline">
+            |
+        </div>
+        <div class="p-2 menu-item align-self-baseline">
+            <a href="#">{{.Item3}}</a>
+        </div>
+    {{if .Profil}}
+        <div class="p-2 ml-0 align-self-center user-icon">
+            <a href="profil_bearbeiten.html"><i class="fas fa-user-circle fa-lg"></i></a>
+        </div>
+    {{else}}
+        <div class="p-2 ml-0 align-self-center user-icon">
+            <a href="warenkorb.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+        </div>
+    {{end}}
+    </div>
+</div>
+-->

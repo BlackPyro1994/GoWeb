@@ -3,24 +3,37 @@ package main
 
 import (
 	"net/http"
-	"fmt"
 	"html/template"
 )
 
-type Test struct {
+type menu struct {
 	Title string
-	News string
+	Item1 string
+	Item2 string
+	Item3 string
+	Basket bool
+	Name string
+	Type string
+	Profil bool
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	p := Test {Title: "THIS IS A TEST", News: "some news" }
+	p := menu {
+		Title: "borgdir.media",
+		Item1: "Equipment",
+		Item2: "Login",
+		Item3: "",
+		Basket: false,
+		Name: "",
+		Type: "",
+		Profil: true }
 
-	tmpl := template.Must(template.ParseFiles("template/index.html", "template/header.html", "template/content_index.html"))
+	tmpl := template.Must(template.ParseFiles("template/index.html", "template/header.html"))
 
-	tmpl.Execute(w, p)
-}
-func world(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "WORLD")
+	tmpl.ExecuteTemplate(w, "header", p)
+	tmpl.ExecuteTemplate(w, "index", p)
+
+
 }
 
 func main() {

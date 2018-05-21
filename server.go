@@ -12,10 +12,10 @@ type Test struct {
 	News string
 }
 
-func hello(w http.ResponseWriter, r *http.Request) {
+func index(w http.ResponseWriter, r *http.Request) {
 	p := Test {Title: "THIS IS A TEST", News: "some news" }
 
-	tmpl := template.Must(template.ParseFiles("template/test.html", "template/layout.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/index.html", "template/header.html", "template/content_index.html"))
 
 	tmpl.Execute(w, p)
 }
@@ -25,8 +25,12 @@ func world(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/hello", hello)
-	http.HandleFunc("/world", world)
+	http.HandleFunc("/", index)
+	http.HandleFunc("/index", index)
 
-	http.ListenAndServe(":8080", nil)
+	fs := http.FileServer(http.Dir("./"))
+
+	http.Handle("/static/", fs)
+
+	http.ListenAndServe(":80", nil)
 }

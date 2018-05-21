@@ -250,10 +250,11 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile: true }
 
-	tmpl := template.Must(template.ParseFiles("template/adminClients.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "admin", p)
+	tmpl.ExecuteTemplate(w, "clients", p)
 
 
 }
@@ -271,8 +272,9 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile: true }
 
-	tmpl := template.Must(template.ParseFiles("template/adminEditClients.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/adminEditClients.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "adminEditClients", p)
 

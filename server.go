@@ -37,8 +37,30 @@ func index(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "index", p)
 
+}
+
+func login(w http.ResponseWriter, r *http.Request) {
+
+	// REGISTER
+	p := menu {
+		Title: "borgdir.media",
+		Item1: "Equipment",
+		Item2: "Login",
+		Item3: "",
+		Basket: false,
+		Name: "",
+		Type: "",
+		EmptySide: true,
+		Profile: false }
+
+	tmpl := template.Must(template.ParseFiles("template/login.html", "template/header.html"))
+
+	tmpl.ExecuteTemplate(w, "header", p)
+	tmpl.ExecuteTemplate(w, "login", p)
+
 
 }
+
 func register(w http.ResponseWriter, r *http.Request) {
 
 	// REGISTER
@@ -100,7 +122,7 @@ func cart(w http.ResponseWriter, r *http.Request) {
 
 
 }
-func myequipment(w http.ResponseWriter, r *http.Request) {
+func myEquipment(w http.ResponseWriter, r *http.Request) {
 
 	p := menu {
 		Title: "borgdir.media",
@@ -120,7 +142,7 @@ func myequipment(w http.ResponseWriter, r *http.Request) {
 
 
 }
-func profile(w http.ResponseWriter, r *http.Request) {
+func profil(w http.ResponseWriter, r *http.Request) {
 
 	p := menu {
 		Title: "borgdir.media",
@@ -180,7 +202,7 @@ func adminEquipment(w http.ResponseWriter, r *http.Request) {
 
 
 }
-func addEquipment(w http.ResponseWriter, r *http.Request) {
+func adminAddEquipment(w http.ResponseWriter, r *http.Request) {
 
 	p := menu {
 		Title: "borgdir.media",
@@ -193,10 +215,10 @@ func addEquipment(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile: true }
 
-	tmpl := template.Must(template.ParseFiles("template/addEquipment.html", "template/header.html"))
+	tmpl := template.Must(template.ParseFiles("template/adminAddEquipment.html", "template/header.html"))
 
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "addEquipment", p)
+	tmpl.ExecuteTemplate(w, "adminAddEquipment", p)
 
 
 }
@@ -244,14 +266,17 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	http.HandleFunc("/", index)
-	http.HandleFunc("/admin", index)
-	http.HandleFunc("/equipment", index)
-	http.HandleFunc("/kunden", index)
-	http.HandleFunc("/login", index)
-	http.HandleFunc("/meinegeräte", index)
-	http.HandleFunc("/profilbearbeiten", index)
-	http.HandleFunc("/registrieren", index)
-	http.HandleFunc("/warenkorb", index)
+	http.HandleFunc("/admin", admin)
+	http.HandleFunc("/admin/equipment", adminEquipment)
+	http.HandleFunc("/admin/add", adminAddEquipment)
+	http.HandleFunc("/admin/clients", adminClients)
+	http.HandleFunc("/admin/edit-client", adminEditClients)
+	http.HandleFunc("/login", login)
+	http.HandleFunc("/equipment", equipment)
+	http.HandleFunc("/my-equipment", myEquipment)
+	http.HandleFunc("/profil", profil)
+	http.HandleFunc("/register", register)
+	http.HandleFunc("/cart", cart)
 
 	fs := http.FileServer(http.Dir("./"))
 

@@ -7,40 +7,26 @@ import (
 	"html/template"
 )
 
-type Todo struct {
+type Test struct {
 	Title string
-	Done  bool
+	News string
 }
 
-type TodoPageData struct {
-	PageTitle string
-	Todos     []Todo
-}
 func hello(w http.ResponseWriter, r *http.Request) {
+	p := Test {Title: "THIS IS A TEST", News: "some news" }
 
-	data := TodoPageData{
-		PageTitle: "My TODO list",
-		Todos: []Todo{
-			{Title: "Task 1", Done: false},
-			{Title: "Task 2", Done: true},
-			{Title: "Task 3", Done: true},
-		},
-	}
+	tmpl := template.Must(template.ParseFiles("template/test.html", "template/layout.html", "template/header.html"))
 
-	tmpl := template.Must(template.ParseFiles("test.tmpl"))
-	tmpl.Execute(w, data)
+	tmpl.Execute(w, p)
 }
 func world(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "WORLD")
 }
 
 func main() {
-	server := http.Server{
-		Addr: ":80",
-	}
 
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/world", world)
 
-	server.ListenAndServe()
+	http.ListenAndServe(":8080", nil)
 }

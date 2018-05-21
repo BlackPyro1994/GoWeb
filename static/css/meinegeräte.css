@@ -73,17 +73,8 @@ i {
     border-color: #0b2e13;
 }
 
-.equipment-row {
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
 .centered-text {
     text-align: center;
-}
-
-.minimal-margin {
-    margin: 0%;
 }
 
 .select-dropdown {
@@ -190,11 +181,6 @@ option {
     border-color: #0b2e13;
     background: black;
 }
-
-.search-row {
-    height: 30%;
-}
-
 select.form-control.search-bar {
     color: white;
     outline: none;
@@ -211,7 +197,7 @@ select.form-control.search-bar {
     border: 1px solid #AAAAAA;
 }
 
-.warenkorb-hinzufügen {
+.warenkorb-hinzufuegen {
     border-radius: 70px;
     width: 80%;
     height: 60%;

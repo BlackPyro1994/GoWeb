@@ -1,285 +1,319 @@
-
 package main
 
 import (
 	"net/http"
 	"html/template"
+	"strings"
+	"fmt"
 )
 
+//--------------------------------------------------------------------
+
 type menu struct {
-	Title string
-	Item1 string
-	Item2 string
-	Item3 string
-	Basket bool
-	Name string
-	Type string
-	Profil bool
+	Title     string
+	Item1     string
+	Item2     string
+	Item3     string
+	Basket    bool
+	Name      string
+	Type      string
+	Profil    bool
 	EmptySide bool
-	Profile bool
+	Profile   bool
+}
+
+type liste struct {
+	Todos [5]string
+}
+
+//--------------------------------------------------------------------
+
+var funcMap = template.FuncMap{
+	"split": func(s string, index int) string {
+		fmt.Println(s, index)
+		arr := strings.Split(s, ",")
+
+		if s == "" {
+			return ""
+		} else {
+			return arr[index]
+		}
+
+	},
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	// INDEX
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Login",
-		Item3: "",
-		Basket: false,
-		Name: "",
-		Type: "",
+
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Login,login",
+		Item3:     "",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: false }
+		Profile:   false}
 
-	tmpl := template.Must(template.ParseFiles("template/layout.html", "template/header.html", "template/index.html"))
+	var tmpl = template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/header.html", "template/layout.html", "template/index.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "index", p)
-
 
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
 
-	// REGISTER
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Login",
-		Item3: "",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Login,login",
+		Item3:     "",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: true,
-		Profile: false }
+		Profile:   false}
 
-	tmpl := template.Must(template.ParseFiles("template/login.html", "template/header.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/header.html", "template/layout.html", "template/login.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "login", p)
-
 
 }
 
 func register(w http.ResponseWriter, r *http.Request) {
 
 	// REGISTER
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Login",
-		Item3: "",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Login,login",
+		Item3:     "",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: true,
-		Profile: false }
+		Profile:   false}
 
-	tmpl := template.Must(template.ParseFiles("template/register.html", "template/header.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/register.html", "template/layout.html", "template/header.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "register", p)
-
 
 }
 
 func equipment(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Meine Geräte",
-		Item3: "Logout",
-		Basket: true,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Meine Geräte,myequipment",
+		Item3:     "Logout,logout",
+		Basket:    true,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "equipment", p)
-
 
 }
 
 func cart(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Meine Geräte",
-		Item3: "Logout",
-		Basket: true,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Meine Geräte,myequipment",
+		Item3:     "Logout,logout",
+		Basket:    true,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/cart.html", "template/header.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "cart", p)
-
 
 }
 
 func myequipment(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Meine Geräte",
-		Item3: "Logout",
-		Basket: true,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Meine Geräte,myequipment",
+		Item3:     "Logout,logout",
+		Basket:    true,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/layout.html","template/myequipment.html", "template/header.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/myequipment.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "myequipment", p)
-
 
 }
 
 func profile(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Meine Geräte",
-		Item3: "Logout",
-		Basket: true,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Meine Geräte,myequipment",
+		Item3:     "Logout,logout",
+		Basket:    true,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/layout.html", "template/header.html", "template/profile.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/profile.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "profile", p)
-
 
 }
 
 func admin(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Kunden",
-		Item3: "Logout",
-		Basket: false,
-		Name: "Peter",
-		Type: "Verleiher",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Kunden,clients",
+		Item3:     "Logout,logout",
+		Basket:    false,
+		Name:      "Peter",
+		Type:      "Verleiher",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/admin.html", "template/header.html", "template/layout.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/admin.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "admin", p)
-
 
 }
 
 func adminEquipment(w http.ResponseWriter, r *http.Request) {
 
 	// ADMIN
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Kunden",
-		Item3: "Logout",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Kunden,clients",
+		Item3:     "Logout,logout",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
-	tmpl := template.Must(template.ParseFiles("template/adminEquipment.html", "template/header.html"))
+		Profile:   true}
 
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/adminEquipment.html", "template/header.html", "template/layout.html"))
+
+	tmpl.ExecuteTemplate(w, "main", p)
+	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "adminEquipment", p)
-
 
 }
 
 func adminAddEquipment(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Kunden",
-		Item3: "Logout",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Kunden,clients",
+		Item3:     "Logout,logout",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/layout.html","template/adminAddEquipment.html", "template/header.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/adminAddEquipment.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "adminAddEquipment", p)
-
 
 }
 
 func adminClients(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Kunden",
-		Item3: "Logout",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Kunden,clients",
+		Item3:     "Logout,logout",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
+	liste := liste{
+		[]string{"aaa","b","dd","fff","qqq"}
+	}
 
+
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
+
+	tmpl.ExecuteTemplate(w, "main", nil)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "clients", p)
-
+	tmpl.ExecuteTemplate(w, "clients", liste)
 
 }
 
 func adminEditClients(w http.ResponseWriter, r *http.Request) {
 
-	p := menu {
-		Title: "borgdir.media",
-		Item1: "Equipment",
-		Item2: "Kunden",
-		Item3: "Logout",
-		Basket: false,
-		Name: "",
-		Type: "",
+	p := menu{
+		Title:     "borgdir.media,index",
+		Item1:     "Equipment,equipment",
+		Item2:     "Kunden,clients",
+		Item3:     "Logout,logout",
+		Basket:    false,
+		Name:      "",
+		Type:      "",
 		EmptySide: false,
-		Profile: true }
+		Profile:   true}
 
-	tmpl := template.Must(template.ParseFiles("template/adminEditClients.html", "template/header.html", "template/layout.html"))
+	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/adminEditClients.html", "template/header.html", "template/layout.html"))
 
+	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 	tmpl.ExecuteTemplate(w, "adminEditClients", p)
 
-
 }
+
+//--------------------------------------------------------------------
 
 func main() {
 

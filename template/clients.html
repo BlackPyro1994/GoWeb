@@ -47,17 +47,17 @@
         <div class="col-md-3">
             <div class="row">
                 <div class="col-md-5">
-                    <img class="equipment-image" src="/static/images/x.png">
+                    <img class="equipment-image" src="/static/images/{{split .Item1 0}}">
                 </div>
                 <div class="col-md-7">
                     <div class="row">
-                        <p class="bold-medium-text minimal-margin">Spongebob Schwammkopf</p>
+                        <p class="bold-medium-text minimal-margin">{{split .Item1 0}}</p>
                     </div>
                     <div class="row">
-                        <p class="small-text minimal-margin">ID.Nr. 34567</p>
+                        <p class="small-text minimal-margin">{{split .Item1 2}}</p>
                     </div>
                     <div class="row">
-                        <p class="small-text red-text bold-text cursiv-text">Benutzer</p>
+                        <p class="small-text red-text bold-text cursiv-text">{{split .Item1 3}}</p>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
         </div>
         <div class="col-md-2 offset-1">
             <p class="minimal-margin ">Konto aktiv bis:</p>
-            <p class="minimal-margin red-text cursiv-text">25.05.2018</p>
+            <p class="minimal-margin red-text cursiv-text">{{split .Item1 4}}</p>
         </div>
         <div class="col-md-1 centered-text">
             <button type="button" class="btn btn-default bg-dark fa-button">

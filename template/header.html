@@ -2,10 +2,10 @@
 <div class="container-fluid">
     <div class="d-flex flex-row align-items-baseline">
         <div class="p-2 title">
-            <a class="title" href="index.html">{{.Title}}</a>
+            <a class="title" href="/{{split .Title 1}}">{{split .Title 0}}</a>
         </div>
         <div class="p-2 menu-item">
-            <a href="equipment.html">{{.Item1}}</a>
+            <a href="/{{split .Item1 1}}">{{split .Item1 0}}</a>
         </div>
         {{if .Item2}}
         <div class ="p-2 menu-item separator">
@@ -13,7 +13,7 @@
         </div>
         {{end}}
         <div class="p-2 menu-item">
-            <a href="login.html">{{.Item2}}</a>
+            <a href="{{split .Item2 1}}">{{split .Item2 0}}</a>
         </div>
         {{if .Item3}}
             <div class ="p-2 menu-item separator">
@@ -21,7 +21,7 @@
             </div>
         {{end}}
         <div class="p-2 menu-item">
-            <a href="equipment.html">{{.Item3}}</a>
+            <a href="/{{split .Item3 1}}">{{split .Item3 0}}</a>
         </div>
         {{if .Basket}}
             <div class="p-2 align-self-baseline">
@@ -33,16 +33,16 @@
             {{if .Profile}}
                 <div class="p-2 ml-auto align-self-center">
                     <div class="p-2">
-                        <a href="profile.html">{{.Name}}</a>
+                        <a href="/profile">{{.Name}}</a>
                         <p class="text-right user">{{.Type}}</p>
                     </div>
                 </div>
                 <div class="p-2 ml-0 align-self-center user-icon">
-                    <a href="profile.html"><i class="fas fa-user-circle fa-lg"></i></a>
+                    <a href="/profile"><i class="fas fa-user-circle fa-lg"></i></a>
                 </div>
             {{else}}
                 <div class="p-2 ml-auto align-self-center user-icon">
-                    <a href="warenkorb.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    <a href="/warenkorb"><i class="fas fa-shopping-cart fa-lg"></i></a>
                 </div>
             {{end}}
         {{end}}
@@ -50,36 +50,3 @@
 </div>
 
 {{end}}
-<!--
-<div class="container-fluid">
-    <div class="d-flex flex-row">
-        <div class="p-2 title align-self-baseline">
-            <a class="title" href="layout.html">{{.Title}}</a>
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="equipment.html">{{.Item1}}</a>
-        </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
-            |
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="clients.html">{{.Item2}}</a>
-        </div>
-        <div class ="p-2 menu-item separator align-self-baseline">
-            |
-        </div>
-        <div class="p-2 menu-item align-self-baseline">
-            <a href="#">{{.Item3}}</a>
-        </div>
-    {{if .Profil}}
-        <div class="p-2 ml-0 align-self-center user-icon">
-            <a href="profile.html"><i class="fas fa-user-circle fa-lg"></i></a>
-        </div>
-    {{else}}
-        <div class="p-2 ml-0 align-self-center user-icon">
-            <a href="warenkorb.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
-        </div>
-    {{end}}
-    </div>
-</div>
--->

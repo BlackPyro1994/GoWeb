@@ -65,40 +65,29 @@ func GetAllArtikel() (artikels []Artikel, err error) {
 	return
 }
 
-
-
-
-
-
-// Get Todo with the provided id
-func Get(id int) (todo Todo, err error) {
-	todo = Todo{}
-	err = Db.QueryRow("select id, action, done from todo where id = $1", id).Scan(&todo.ID, &todo.Action, &todo.Done)
+// Get Artikel by ArtikelID
+func Get(id int) (artikel Artikel, err error) {
+	artikel = Artikel{}
+	err = Db.QueryRow("select ArtikelID, Bezeichnung, Kategorie, Lagerort, Anzahl, Hinweis, BildUrl from Artikel where ArtikelID = $1", id).Scan(&artikel.ArtikelID, &artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
 	return
 }
 
-// Add Todo
-func (todo *Todo) Add() (err error) {
-	statement := "insert into todo (action, done) values ($1, $2)"
-	stmt, err := Db.Prepare(statement)
-
-	if err != nil {
-		return
-	}
-
-	defer stmt.Close()
-	_, err = stmt.Exec(todo.Action, todo.Done)
+// Add Artikel
+func  Add(bez string, kat string, lago string, anz int, hin string, url string)  (err error) {
+	//defer stmt.Close()
+	//_, err = stmt.Exec(&artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
+	_, err = Db.Exec("insert into Artikel (Bezeichnung, Kategorie, Lagerort, Anzahl, Hinweis, BildURL) values (bez, kat, lago, anz, hin, url)")
 	return
 }
 
-// ToggleStatus toggles the completion status of the Todo with the provided id
-func (todo *Todo) ToggleStatus() (err error) {
-	_, err = Db.Exec("update todo set done = not done where id = $1", todo.ID)
+// ToggleStatus toggles the completion status of the Artikel by id
+func  ToggleStatus(bez string, id int) (err error) {
+	_, err = Db.Exec("update Artikel set Bezeichnung = $1 where ArtikelID = $2",bez,id)
 	return
 }
 
-// Delete Todo with the provided id from the list of Todos
-func (todo *Todo) Delete() (err error) {
-	_, err = Db.Exec("delete from todo where id = $1", todo.ID)
+// Delete Artikel by id from the list of artikels
+func Delete(id int) (err error) {
+	_, err = Db.Exec("delete from Artikel where ArtikelID = $1", id)
 	return
 }

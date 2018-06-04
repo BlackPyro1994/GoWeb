@@ -338,9 +338,9 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	fmt.Println(model.GetAllArtikel())
-	// panic(nil)
-
-	fmt.Println("hallo")
+	model.Add("Bez","KAT", "LAGO", 42, "HIN", "URL")
+	//model.Db.Exec("delete from Artikel where id = 4")
+	fmt.Println(model.GetAllArtikel())
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/admin", admin)

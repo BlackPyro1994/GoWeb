@@ -337,8 +337,7 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	model.GetAll()
-
+	fmt.Println(model.GetAllArtikel())
 	// panic(nil)
 
 	fmt.Println("hallo")

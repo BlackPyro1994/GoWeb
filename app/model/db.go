@@ -5,11 +5,30 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// Todo data structure
-type Todo struct {
-	ID     int
-	Action string
-	Done   bool
+// Artikel data structure
+type Artikel struct {
+	ArtikelID int
+	Bezeichnung string
+	Kategorie string
+	Lagerort string
+	Anzahl int
+	Hinweis string
+	BildURL string
+}
+
+// Kunde data structure
+type Kunde struct {
+	KundeID int
+	Benutzername string
+	Passwort string
+	Email string
+}
+
+// Kunde data structure
+type Verleiher struct {
+	VerleiherID int
+	Benutzername string
+	Email string
 }
 
 // Db handle
@@ -23,28 +42,33 @@ func init() {
 	}
 }
 
-// GetAll Todo
-func GetAll() (todos []Todo, err error) {
-	rows, err := Db.Query("select id, action, done from todo")
+// GetAll Artikel
+func GetAllArtikel() (artikels []Artikel, err error) {
+	rows, err := Db.Query("select ArtikelID, Bezeichnung, Kategorie, Lagerort, Anzahl, Hinweis, BildUrl from Artikel")
 
 	if err != nil {
 		return
 	}
 
 	for rows.Next() {
-		todo := Todo{}
-		err = rows.Scan(&todo.ID, &todo.Action, &todo.Done)
+		artikel := Artikel{}
+		err = rows.Scan(&artikel.ArtikelID, &artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
 
 		if err != nil {
 			return
 		}
 
-		todos = append(todos, todo)
+		artikels = append(artikels, artikel)
 	}
 
 	rows.Close()
 	return
 }
+
+
+
+
+
 
 // Get Todo with the provided id
 func Get(id int) (todo Todo, err error) {

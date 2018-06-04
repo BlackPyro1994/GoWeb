@@ -43,21 +43,22 @@
 
     <br>
 
+{{range .Items}}
     <div class="row equipment-row">
         <div class="col-md-3">
             <div class="row">
                 <div class="col-md-5">
-                    <img class="equipment-image" src="/static/images/{{split .Item1 0}}">
+                    <img class="equipment-image" src="/static/images/{{.A}}">
                 </div>
                 <div class="col-md-7">
                     <div class="row">
-                        <p class="bold-medium-text minimal-margin">{{split .Item1 0}}</p>
+                        <p class="bold-medium-text minimal-margin">{{.B}}</p>
                     </div>
                     <div class="row">
-                        <p class="small-text minimal-margin">{{split .Item1 2}}</p>
+                        <p class="small-text minimal-margin">{{.C}}</p>
                     </div>
                     <div class="row">
-                        <p class="small-text red-text bold-text cursiv-text">{{split .Item1 3}}</p>
+                        <p class="small-text red-text bold-text cursiv-text">{{.D}}</p>
                     </div>
                 </div>
             </div>
@@ -68,7 +69,7 @@
         </div>
         <div class="col-md-2 offset-1">
             <p class="minimal-margin ">Konto aktiv bis:</p>
-            <p class="minimal-margin red-text cursiv-text">{{split .Item1 4}}</p>
+            <p class="minimal-margin red-text cursiv-text">{{.E}}</p>
         </div>
         <div class="col-md-1 centered-text">
             <button type="button" class="btn btn-default bg-dark fa-button">
@@ -77,6 +78,7 @@
         </div>
 
     </div>
+{{end}}}
 
 </div>
 {{end}}

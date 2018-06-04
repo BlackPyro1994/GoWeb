@@ -1,10 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"html/template"
+	"net/http"
 	"strings"
 	"fmt"
+	"./app/model"
 )
 
 //--------------------------------------------------------------------
@@ -22,15 +23,23 @@ type menu struct {
 	Profile   bool
 }
 
-type liste struct {
-	Todos [5]string
+type Ware struct {
+	Items []Item
+}
+
+type Item struct {
+	A string
+	B string
+	C string
+	D string
+	E string
 }
 
 //--------------------------------------------------------------------
 
 var funcMap = template.FuncMap{
 	"split": func(s string, index int) string {
-		fmt.Println(s, index)
+		// fmt.Println(s, index)
 		arr := strings.Split(s, ",")
 
 		if s == "" {
@@ -277,17 +286,28 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
-	liste := liste{
-		[]string{"aaa","b","dd","fff","qqq"}
+	/* liste := list{
+	[5]string{"x.png,Kamera1,Inv.Nr.1234,25.054.123123",
+		"x.png,Kamera1,Inv.Nr.1234,25.054.123123",
+		"x.png,Kamera2,Inv.Nr.1234,25.054.123123",
+		"x.png,Kamera3,Inv.Nr.1234,25.054.123123",
+		"x.png,Kamera4,Inv.Nr.1234,25.054.123123"}}*/
+
+	lol := Ware{
+		Items: []Item{
+			{A: "x.png", B: "Kamera1", C: "Inv.Nr.12", D: "34", E: "25.054.12"},
+			{A: "x.png", B: "Kamera1", C: "Inv.Nr.12", D: "34", E: "25.054.12"},
+		},
 	}
 
+	// fmt.Println(lol.items[0])
 
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", nil)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "clients", liste)
+	tmpl.ExecuteTemplate(w, "clients", lol)
 
 }
 
@@ -316,6 +336,12 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 //--------------------------------------------------------------------
 
 func main() {
+
+	model.GetAll()
+
+	// panic(nil)
+
+	fmt.Println("hallo")
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/admin", admin)

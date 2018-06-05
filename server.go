@@ -335,6 +335,8 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 
 //--------------------------------------------------------------------
 
+var artikelList = make(model.Artikels)
+
 func main() {
 
 	fmt.Println("ALLE ARTIKEL")
@@ -349,7 +351,9 @@ func main() {
 	fmt.Println("DELETE ARTIKEL MIT ID 5")
 	model.DeleteArtikel(5)
 	fmt.Println()
-	fmt.Println("ALLE ARTIKEL 3.0")
+	fmt.Println("ADD NEUER ARTIKEL")
+	artikel := model.Artikel{0,"Bez","Kat", "LAGERORT", 99, "hinweis","url"}
+	artikel.CreateArtikel()
 	fmt.Println(model.ReadAllArtikel())
 
 	fmt.Println()

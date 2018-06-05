@@ -15,6 +15,8 @@ type Artikel struct {
 	BildURL string
 }
 
+type Artikels map[int]*Artikel
+
 // GetAll Artikel
 func ReadAllArtikel() (artikels []Artikel, err error) {
 	rows, err := Db.Query("select * from Artikel")
@@ -37,8 +39,8 @@ func ReadAllArtikel() (artikels []Artikel, err error) {
 }
 
 // Create Artikel
-func  (artikel *Artikel) CreateArtikel(bez string, kat string, lago string, anz int, hin string, url string)  (err error) {
-	statement := "insert into Artikel (Bezeichnung, Kategorie, Lagerort, Anzahl, Hinweis, BildURL) values (bez, kat, lago, anz, hin, url)"
+func  (artikel *Artikel) CreateArtikel()  (err error) {
+	statement := "insert into Artikel (Bezeichnung, Kategorie, Lagerort, Anzahl, Hinweis, BildURL) values (?,?,?,?,?,?)"
 	stmt, err := Db.Prepare(statement)
 
 	if err != nil {

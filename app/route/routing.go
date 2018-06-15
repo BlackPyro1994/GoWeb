@@ -301,36 +301,36 @@ func adminAddEquipment(w http.ResponseWriter, r *http.Request) {
 func adminClients(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
-		adminEditClients()
+		// adminEditClients(w,r)
+		// userName := r.
 	} else {
 
-
 		p := menu{
-		Title:     "borgdir.media,index",
-		Item1:     "Equipment,equipment",
-		Item2:     "Kunden,clients",
-		Item3:     "Logout,logout",
-		Basket:    false,
-		Name:      "",
-		Type:      "",
-		EmptySide: false,
-		Profile:   true}
+			Title:     "borgdir.media,index",
+			Item1:     "Equipment,equipment",
+			Item2:     "Kunden,clients",
+			Item3:     "Logout,logout",
+			Basket:    false,
+			Name:      "",
+			Type:      "",
+			EmptySide: false,
+			Profile:   true}
 
-	KundenArr := controller.GetAllKunden()
+		KundenArr := controller.GetAllKunden()
 
-	var ClientsArr= []client{}
+		var ClientsArr = []client{}
 
-	// for index := range ClientsArr {
-	for _,element := range KundenArr {
-		// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
+		// for index := range ClientsArr {
+		for _, element := range KundenArr {
+			// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
 
-		artikelFromUser := controller.GetAllArtikelFromKunde(element.KundeID)
+			artikelFromUser := controller.GetAllArtikelFromKunde(element.KundeID)
 
-		var EquipmentString = []Bez{}
+			var EquipmentString= []Bez{}
 
-		for _,element := range artikelFromUser {
+			for _, element := range artikelFromUser {
 
-			EquipmentString = append(EquipmentString,Bez{element})
+				EquipmentString = append(EquipmentString, Bez{element})
 			}
 
 			ClientsArr = append(ClientsArr, client{element.BildUrl, element.Benutzername, element.KundeID, element.Typ, EquipmentString, element.Status})
@@ -348,6 +348,7 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		tmpl.ExecuteTemplate(w, "clients", data)
 
 	}
+}
 
 func adminEditClients(w http.ResponseWriter, r *http.Request) {
 

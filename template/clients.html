@@ -55,7 +55,7 @@
                         <p class="bold-medium-text minimal-margin">{{.Benutzername}}</p>
                     </div>
                     <div class="row">
-                        <p class="small-text minimal-margin">{{.KundenID}}</p>
+                        <p class="small-text minimal-margin" name="kundenId" >{{.KundenID}}</p>
                     </div>
                     <div class="row">
                         <p class="small-text red-text bold-text cursiv-text">{{.Typ}}</p>
@@ -76,7 +76,7 @@
         </div>
         <div class="col-md-1 centered-text">
             <form class="form" role="form" onsubmit="return validateForm()" method="POST">
-                <button type="button" class="btn btn-default bg-dark fa-button">
+                <button type="button" name="KundenID" value="{{.KundenID}}"class="btn btn-default bg-dark fa-button">
                     <i class="fas fa-pencil-alt text-white"></i>
                 </button>
             </form>

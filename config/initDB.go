@@ -10,16 +10,16 @@ import (
 var Db *sql.DB
 var err error
 
-func initSQLiteDB() {
+func InitSQLiteDB() {
 
-	Db, err = sql.Open("sqlite3", "./data/borgdir.media")
+	Db, err = sql.Open("sqlite3", "./data/borgdirmedia")
 	if err != nil {
 		panic(err)
 	}
 }
 
-func initPostgresDB() {
-	connStr := "user=postgres dbname=postgres password=postgres host=localhost port=5431 sslmode=disable"
+func InitPostgresDB() {
+	connStr := "user=borgdirmedia dbname=borgdirmedia password=borgdirmedia host=localhost port=5431 sslmode=disable"
 	Db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)

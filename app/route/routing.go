@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"strings"
 	"../model"
+	"../controller"
+	"fmt"
 )
 
 //--------------------------------------------------------------------
@@ -22,16 +24,22 @@ type menu struct {
 	Profile   bool
 }
 
-type Ware struct {
-	Items []Item
+type Items struct {
+	KundenItems []model.Kunde
+	VerleiheItems []model.Verleihe
 }
 
-type Item struct {
-	A string
-	B string
-	C string
-	D string
-	E string
+type Clients struct {
+	Items []client
+}
+
+type client struct {
+	BildUrl      string
+	Benutzername string
+	KundenID     string
+	Typ          string
+	Bezeichnung  string
+	Status       string
 }
 
 //--------------------------------------------------------------------
@@ -100,25 +108,30 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 func register(w http.ResponseWriter, r *http.Request) {
 
-	// REGISTER
-	p := menu{
-		Title:     "borgdir.media,index",
-		Item1:     "Equipment,equipment",
-		Item2:     "Login,login",
-		Item3:     "",
-		Basket:    false,
-		Name:      "",
-		Type:      "",
-		EmptySide: true,
-		Profile:   false}
+	if r.Method == "POST" {
+		controller.RegisterKunden(w, r)
+		// index(w,r)
+	} else {
 
-	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/register.html", "template/layout.html", "template/header.html"))
+		// REGISTER
+		p := menu{
+			Title:     "borgdir.media,index",
+			Item1:     "Equipment,equipment",
+			Item2:     "Login,login",
+			Item3:     "",
+			Basket:    false,
+			Name:      "",
+			Type:      "",
+			EmptySide: true,
+			Profile:   false}
 
-	tmpl.ExecuteTemplate(w, "main", p)
-	tmpl.ExecuteTemplate(w, "layout", p)
-	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "register", p)
+		tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/register.html", "template/layout.html", "template/header.html"))
 
+		tmpl.ExecuteTemplate(w, "main", p)
+		tmpl.ExecuteTemplate(w, "layout", p)
+		tmpl.ExecuteTemplate(w, "header", p)
+		tmpl.ExecuteTemplate(w, "register", p)
+	}
 }
 
 func equipment(w http.ResponseWriter, r *http.Request) {
@@ -256,6 +269,12 @@ func adminEquipment(w http.ResponseWriter, r *http.Request) {
 
 func adminAddEquipment(w http.ResponseWriter, r *http.Request) {
 
+	if r.Method == "POST" {
+		controller.CreateArtikel(w, r)
+		// equipment(w,r)
+	} else {
+
+	}
 	p := menu{
 		Title:     "borgdir.media,index",
 		Item1:     "Equipment,equipment",
@@ -289,11 +308,33 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
-	lol := Ware{
-		Items: []Item{
-			{A: "x.png", B: "Kamera1", C: "Inv.Nr.12", D: "34", E: "25.054.12"},
-			{A: "x.png", B: "Kamera1", C: "Inv.Nr.12", D: "34", E: "25.054.12"},
-		},
+	KundenArr, err := controller.GetAllKunden()
+
+	fmt.Print(err)
+
+	// var ClientsArr = []client{}
+
+	VerleiheArr,err := controller.GetAllVerleihe()
+
+	fmt.Print(err)
+
+	// for index := range ClientsArr {
+	// for range VerleiheArr {
+
+	// for i := 0; i < 10; i++ {
+	// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
+
+	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
+	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
+	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
+	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
+	//}
+
+	fmt.Println(KundenArr)
+
+	data := Items{
+		KundenItems: KundenArr,
+		VerleiheItems: VerleiheArr,
 	}
 
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
@@ -301,7 +342,7 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "main", nil)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "clients", lol)
+	tmpl.ExecuteTemplate(w, "clients", data)
 
 }
 
@@ -329,7 +370,7 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 
 //--------------------------------------------------------------------
 
-func handler() {
+func Handler() {
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/admin", admin)

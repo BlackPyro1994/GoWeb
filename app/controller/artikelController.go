@@ -7,7 +7,7 @@ import (
 )
 
 // GetAll Artikel
-func ReadAllArtikel() (artikels [] model.Artikel, err error) {
+func ReadAllArtikel() (artikels [] model.Artikel) {
 	rows, err := config.Db.Query("select * from Artikel")
 
 	if err != nil {
@@ -71,5 +71,29 @@ func UpdateArtikel(id int, bez string, kat string, lago string, anz int, hin str
 // Delete Artikel by id
 func DeleteArtikel(id int) (err error) {
 	_, err = config.Db.Exec("delete from Artikel where ArtikelID = $1", id)
+	return
+}
+
+func GetAllArtikelFromKunde(kunde_id int) (Bezeichnungen []string) {
+
+	rows, err := config.Db.Query("select Artikel.Bezeichnung from Artikel,Verleih where Verleih.KundenID=$1 and Artikel.ArtikelID = Verleih.ArtikelID", kunde_id)
+
+	if err != nil {
+		return
+	}
+
+	var temp = ""
+
+	for rows.Next() {
+		err = rows.Scan(&temp)
+
+		Bezeichnungen = append(Bezeichnungen,temp)
+
+		if err != nil {
+			return
+		}
+	}
+	rows.Close()
+
 	return
 }

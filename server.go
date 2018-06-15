@@ -4,11 +4,20 @@ import (
 	"net/http"
 	"./app/route"
 	"./config"
+
 )
 
 func main() {
 
 	config.InitSQLiteDB()
+
+	// controller.GetAllArtikelFromKunde(1)
+
+	// temp:=""
+
+	// println(rows)
+	// println(temp)
+	// println(err)
 
 	route.Handler()
 

@@ -1,6 +1,10 @@
 package controller
 
-/*
+import (
+	"../model"
+	"../../config"
+)
+
 func GetAllVerleihe() (verleihe [] model.Verleih) {
 	rows, err := config.Db.Query("select * from Verleih")
 
@@ -10,15 +14,15 @@ func GetAllVerleihe() (verleihe [] model.Verleih) {
 
 	for rows.Next() {
 		verleih := model.Verleih{}
-		err = rows.Scan(&verleih.ArtikelID, &artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
+
+		err = rows.Scan(&verleih.VerleihID,&verleih.KundenID,&verleih.ArtikelID,&verleih.Beginn,&verleih.Rueckgabe)
 
 		if err != nil {
 			return
 		}
-		artikels = append(artikels, artikel)
+
+		verleihe= append(verleihe, verleih)
 	}
 	rows.Close()
 	return
 }
-
-*/

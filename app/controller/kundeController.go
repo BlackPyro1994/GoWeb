@@ -26,7 +26,7 @@ func RegisterKunden(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetAll Kunden
-func GetAllKunden() (kunden [] model.Kunde , err error) {
+func GetAllKunden() (kunden [] model.Kunde){
 	rows, err := config.Db.Query("select * from Kunde")
 
 	if err != nil {
@@ -41,7 +41,6 @@ func GetAllKunden() (kunden [] model.Kunde , err error) {
 			return
 		}
 
-		// fmt.Println(kunden)
 		kunden = append(kunden, kunde)
 	}
 	rows.Close()

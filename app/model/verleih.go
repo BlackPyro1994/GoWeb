@@ -10,8 +10,8 @@ type Verleih struct {
 	VerleihID int
 	KundenID int
 	ArtikelID int
-	Beginn int
-	Rueckgabe int
+	Beginn string
+	Rueckgabe string
 }
 
 type Verleihe map[int]* Verleih

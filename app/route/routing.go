@@ -6,7 +6,6 @@ import (
 	"strings"
 	"../model"
 	"../controller"
-	"fmt"
 )
 
 //--------------------------------------------------------------------
@@ -25,7 +24,7 @@ type menu struct {
 }
 
 type Items struct {
-	KundenItems []model.Kunde
+	KundenItems   []model.Kunde
 	VerleiheItems []model.Verleihe
 }
 
@@ -36,10 +35,14 @@ type Clients struct {
 type client struct {
 	BildUrl      string
 	Benutzername string
-	KundenID     string
+	KundenID     int
 	Typ          string
-	Bezeichnung  string
+	Bezeichnungen  []Bez
 	Status       string
+}
+
+type Bez struct {
+	Bezeichnung string
 }
 
 //--------------------------------------------------------------------
@@ -297,7 +300,12 @@ func adminAddEquipment(w http.ResponseWriter, r *http.Request) {
 
 func adminClients(w http.ResponseWriter, r *http.Request) {
 
-	p := menu{
+	if r.Method == "POST" {
+		adminEditClients()
+	} else {
+
+
+		p := menu{
 		Title:     "borgdir.media,index",
 		Item1:     "Equipment,equipment",
 		Item2:     "Kunden,clients",
@@ -308,43 +316,38 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
-	KundenArr, err := controller.GetAllKunden()
+	KundenArr := controller.GetAllKunden()
 
-	fmt.Print(err)
-
-	// var ClientsArr = []client{}
-
-	VerleiheArr,err := controller.GetAllVerleihe()
-
-	fmt.Print(err)
+	var ClientsArr= []client{}
 
 	// for index := range ClientsArr {
-	// for range VerleiheArr {
+	for _,element := range KundenArr {
+		// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
 
-	// for i := 0; i < 10; i++ {
-	// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
+		artikelFromUser := controller.GetAllArtikelFromKunde(element.KundeID)
 
-	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
-	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
-	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
-	// ClientsArr = append(ClientsArr, client{"asdad", "asdasda", "asdasda", "asdasd", "asdads", "asdasd"})
-	//}
+		var EquipmentString = []Bez{}
 
-	fmt.Println(KundenArr)
+		for _,element := range artikelFromUser {
 
-	data := Items{
-		KundenItems: KundenArr,
-		VerleiheItems: VerleiheArr,
+			EquipmentString = append(EquipmentString,Bez{element})
+			}
+
+			ClientsArr = append(ClientsArr, client{element.BildUrl, element.Benutzername, element.KundeID, element.Typ, EquipmentString, element.Status})
+		}
+
+		data := Clients{
+			Items: ClientsArr,
+		}
+
+		tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
+
+		tmpl.ExecuteTemplate(w, "main", nil)
+		tmpl.ExecuteTemplate(w, "layout", p)
+		tmpl.ExecuteTemplate(w, "header", p)
+		tmpl.ExecuteTemplate(w, "clients", data)
+
 	}
-
-	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/clients.html", "template/header.html", "template/layout.html"))
-
-	tmpl.ExecuteTemplate(w, "main", nil)
-	tmpl.ExecuteTemplate(w, "layout", p)
-	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "clients", data)
-
-}
 
 func adminEditClients(w http.ResponseWriter, r *http.Request) {
 

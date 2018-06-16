@@ -16,27 +16,6 @@ type Verleih struct {
 
 type Verleihe map[int]* Verleih
 
-// GetAll Verleiher
-func ReadAllVerleiher() (verleihers []Verleih, err error) {
-	rows, err := config.Db.Query("select * from Verleiher")
-
-	if err != nil {
-		return
-	}
-
-	for rows.Next() {
-		verleiher := Verleih{}
-		err = rows.Scan(&verleiher.VerleihID, &verleiher.VerleihID, &verleiher.KundenID)
-
-		if err != nil {
-			return
-		}
-		verleihers = append(verleihers, verleiher)
-	}
-	rows.Close()
-	return
-}
-
 // Create Verleiher
 func  CreateVerleiher(bname string, mail string)  (err error) {
 	//defer stmt.Close()

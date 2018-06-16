@@ -26,8 +26,8 @@ func RegisterKunden(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetAll Kunden
-func GetAllKunden() (kunden [] model.Kunde){
-	rows, err := config.Db.Query("select * from Kunde")
+func GetAllUser() (kunden [] model.Kunde){
+	rows, err := config.Db.Query("select * from Kunde where Typ = 'Benutzer'")
 
 	if err != nil {
 		return

@@ -32,189 +32,74 @@
         </div>
 
     </div>
-    
-    <div class="row mt-5">
 
-        <div class="col-md-6">
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
-                    </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn btn-block warenkorb-hinzufuegen red-background"></button>
+    {{range .Items}}
+        <!-- LINKS -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <h5 class="">{{.Bezeichnung}}</h5>
                         </div>
-                        <div class="col text-lg-right red-text">
-                            <p>entliehen</p>
+                        <div class="row text-spalte">
+                            <p>{{.Hinweis}}</p>
+                        </div>
+                        <div class="row">
+                            {{if eq .Anzahl 0}}
+                                <div class="col">
+                                </div>
+                                <div class="col text-lg-right red-text">
+                                    <p>entliehen</p>
+                                </div>
+                            {{else}}
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-block button-startpage"></button>
+                                </div>
+                                <div class="col text-lg-right aktiv">
+                                    <p>{{.Anzahl}} verfügbar</p>
+                                </div>
+                            {{end}}
                         </div>
                     </div>
-
-
+                    <div class="col-md-3">
+                        <img class="equipment-image" src="/static/images/{{.BildURL}}">
+                    </div>
                 </div>
-
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
-                </div>
-
             </div>
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
-                    </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background"></button>
+            <!-- RECHTS -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <h5 class="">{{.Bezeichnung}}</h5>
                         </div>
-                        <div class="col-md-6 text-lg-right">
-                            <p>3 verf uegbar</p>
+                        <div class="row text-spalte">
+                            <p>{{.Hinweis}}</p>
                         </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
-                </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
-                    </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background "></button>
-                        </div>
-                        <div class="col-md-6 text-lg-right red-text">
-                            <p>entliehen</p>
+                        <div class="row">
+                        {{if eq .Anzahl 0}}
+                            <div class="col">
+                            </div>
+                            <div class="col text-lg-right red-text">
+                                <p>entliehen</p>
+                            </div>
+                        {{else}}
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-block button-startpage"></button>
+                            </div>
+                            <div class="col text-lg-right aktiv">
+                                <p>{{.Anzahl}} verfügbar</p>
+                            </div>
+                        {{end}}
                         </div>
                     </div>
-
-
-                </div>
-
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
+                    <div class="col-md-3">
+                        <img class="equipment-image" src="/static/images/{{.BildURL}}">
                     </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background "></button>
-                        </div>
-                        <div class="col-md-6 text-lg-right red-text">
-                            <p>entliehen</p>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
-                </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
-                    </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background "></button>
-                        </div>
-                        <div class="col-md-6 text-lg-right red-text">
-                            <p>entliehen</p>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
-                </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <h5 class="">Kamera</h5>
-                    </div>
-
-                    <div class="row text-spalte">
-                        <p>
-                            ****************************************************************************************************************************************</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn red-background "></button>
-                        </div>
-                        <div class="col-md-6 text-lg-right red-text">
-                            <p>vorgemerkt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <img class="equipment-image" src="/static/images/x.png">
                 </div>
             </div>
         </div>
-    </div>
+    {{end}}
 </div>
 {{end}}

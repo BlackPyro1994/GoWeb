@@ -4,8 +4,9 @@ import (
 	"html/template"
 	"net/http"
 	"strings"
-	"../model"
 	"../controller"
+	"../model"
+	"fmt"
 )
 
 //--------------------------------------------------------------------
@@ -21,11 +22,6 @@ type menu struct {
 	Profil    bool
 	EmptySide bool
 	Profile   bool
-}
-
-type Items struct {
-	KundenItems   []model.Kunde
-	VerleiheItems []model.Verleihe
 }
 
 type Clients struct {
@@ -45,6 +41,17 @@ type Bez struct {
 	Bezeichnung string
 }
 
+
+type MyEquipment struct {
+	Items []model.MyEquipment
+}
+type AdminEquipments struct {
+	Items []model.AdminEquipments
+}
+type Equipment struct {
+	Items []model.Equipment
+}
+
 //--------------------------------------------------------------------
 
 var funcMap = template.FuncMap{
@@ -61,7 +68,7 @@ var funcMap = template.FuncMap{
 	},
 }
 
-var artikelList = make(model.Artikels)
+//var artikelList = make(model.Artikels)
 
 //------------------------------------------------------------------------
 
@@ -150,12 +157,16 @@ func equipment(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
+	EquipmentArr := controller.GetEquipment()
+
+	fmt.Print(EquipmentArr)
+
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "equipment", p)
+	tmpl.ExecuteTemplate(w, "equipment", Equipment{Items:EquipmentArr})
 
 }
 
@@ -194,12 +205,15 @@ func myequipment(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
+	// Alle Artikel von eingeloggtem Kunden -> var logged_id
+	ArtikelArr := controller.GetUserEquipment(1)
+
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/myequipment.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "myequipment", p)
+	tmpl.ExecuteTemplate(w, "myequipment", MyEquipment{Items: ArtikelArr})
 
 }
 
@@ -261,12 +275,14 @@ func adminEquipment(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
+	ArtikelArr := controller.GetAdminEquipment(1)
+
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/adminEquipment.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "adminEquipment", p)
+	tmpl.ExecuteTemplate(w, "adminEquipment", AdminEquipments{Items: ArtikelArr})
 
 }
 
@@ -316,7 +332,8 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 			EmptySide: false,
 			Profile:   true}
 
-		KundenArr := controller.GetAllKunden()
+		//Alle Kunden auslesen
+		KundenArr := controller.GetAllUser()
 
 		var ClientsArr = []client{}
 
@@ -324,7 +341,7 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		for _, element := range KundenArr {
 			// ClientsArr = append(ClientsArr,client{controller.getKundenById(controller.getVerleihById(index).kundeID)).bildUrl,"asdasd","asdasd","asdasd","asdasd","asdasdad",},)
 
-			artikelFromUser := controller.GetAllArtikelFromKunde(element.KundeID)
+			artikelFromUser := controller.GetAllBezeichnungenFromKundenArtikel(element.KundeID)
 
 			var EquipmentString= []Bez{}
 

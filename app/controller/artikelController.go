@@ -6,27 +6,6 @@ import (
 	"net/http"
 )
 
-// GetAll Artikel
-func ReadAllArtikel() (artikels [] model.Artikel) {
-	rows, err := config.Db.Query("select * from Artikel")
-
-	if err != nil {
-		return
-	}
-
-	for rows.Next() {
-		artikel := model.Artikel{}
-		err = rows.Scan(&artikel.ArtikelID, &artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
-
-		if err != nil {
-			return
-		}
-		artikels = append(artikels, artikel)
-	}
-	rows.Close()
-	return
-}
-
 func CreateArtikel(w http.ResponseWriter, r *http.Request) {
 
 	bezeichnung := r.FormValue("bz")
@@ -50,13 +29,6 @@ func CreateArtikel(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-// Read Artikel by ArtikelID
-func ReadArtikel(id int) (artikel model.Artikel, err error) {
-	artikel = model.Artikel{}
-	err = config.Db.QueryRow("select *  from Artikel where ArtikelID = $1", id).Scan(&artikel.ArtikelID, &artikel.Bezeichnung, &artikel.Kategorie, &artikel.Lagerort, &artikel.Anzahl, &artikel.Hinweis, &artikel.BildURL)
-	return
-}
-
 // Update the Artikel-Bezeichnung by id
 func UpdateArtikel(id int, bez string, kat string, lago string, anz int, hin string, url string) (err error) {
 	_, err = config.Db.Exec("update Artikel set Bezeichnung = $1 where ArtikelID = $2", bez, id)
@@ -74,7 +46,30 @@ func DeleteArtikel(id int) (err error) {
 	return
 }
 
-func GetAllArtikelFromKunde(kunde_id int) (Bezeichnungen []string) {
+func GetEquipment() (Equipments []model.Equipment) {
+	rows, err := config.Db.Query("select BildURL, Bezeichnung, Anzahl, Hinweis FROM Artikel")
+
+	if err != nil {
+		return
+	}
+
+	equipment := model.Equipment{}
+
+	for rows.Next() {
+		err = rows.Scan(&equipment.BildURL, &equipment.Bezeichnung, &equipment.Anzahl, &equipment.Hinweis)
+
+		Equipments = append(Equipments, equipment)
+
+		if err != nil {
+			return
+		}
+	}
+	rows.Close()
+
+	return
+}
+
+func GetAllBezeichnungenFromKundenArtikel(kunde_id int) (Bezeichnungen []string) {
 
 	rows, err := config.Db.Query("select Artikel.Bezeichnung from Artikel,Verleih where Verleih.KundenID=$1 and Artikel.ArtikelID = Verleih.ArtikelID", kunde_id)
 
@@ -95,5 +90,48 @@ func GetAllArtikelFromKunde(kunde_id int) (Bezeichnungen []string) {
 	}
 	rows.Close()
 
+	return
+}
+
+
+func GetUserEquipment(kunde_id int) (equipments []model.MyEquipment) {
+	rows, err := config.Db.Query("select Artikel.BildURL, Artikel.Bezeichnung, Artikel.InventarNummer, Artikel.Hinweis, Verleih.Beginn, Verleih.Rueckgabe from Artikel,Verleih WHERE Artikel.ArtikelID = Verleih.ArtikelID AND Verleih.KundenID=$1", kunde_id)
+
+	if err != nil {
+		return
+	}
+	for rows.Next() {
+		equipment := model.MyEquipment{}
+
+		err = rows.Scan(&equipment.BildURL,&equipment.Bezeichnung, &equipment.InventarNummer, &equipment.Hinweis, &equipment.Beginn, &equipment.Rueckgabe)
+
+		if err != nil {
+			return
+		}
+
+		equipments = append(equipments, equipment)
+	}
+	rows.Close()
+	return
+}
+
+func GetAdminEquipment(kunde_id int) (adminEquipments []model.AdminEquipments) {
+	rows, err := config.Db.Query("select Artikel.Bezeichnung, Artikel.InventarNummer, Artikel.Lagerort Artikel.Hinweis, Kunde.Benutzername, Verleih.Rueckgabe from Artikel,Verleih,Kunde WHERE Artikel.ArtikelID = Verleih.ArtikelID AND Verleih.KundenID=$1", kunde_id)
+
+	if err != nil {
+		return
+	}
+	for rows.Next() {
+		adminEquipment := model.AdminEquipments{}
+
+		err = rows.Scan(&adminEquipment.Bezeichnung,&adminEquipment.InventarNummer, &adminEquipment.Lagerort, &adminEquipment.Hinweis, &adminEquipment.Benutzername, &adminEquipment.Rueckgabe)
+
+		if err != nil {
+			return
+		}
+
+		adminEquipments = append(adminEquipments, adminEquipment)
+	}
+	rows.Close()
 	return
 }

@@ -3,7 +3,6 @@ package model
 import (
 	_ "github.com/mattn/go-sqlite3"
 	"../../config"
-	"fmt"
 )
 
 type Kunden map[int]* Kunde
@@ -18,30 +17,6 @@ type Kunde struct {
 	Passwort string
 	Email string
 }
-// GetAll Kunde
-func ReadAllKunden() (kunden []Kunde, err error) {
-	rows, err := config.Db.Query("select * from Kunde")
-
-	if err != nil {
-		return
-	}
-
-	for rows.Next() {
-		kunde := Kunde{}
-		err = rows.Scan(&kunde.KundeID, &kunde.Benutzername, &kunde.Passwort, &kunde.Email)
-
-		if err != nil {
-			return
-		}
-
-		fmt.Println(kunden)
-		kunden = append(kunden, kunde)
-	}
-	rows.Close()
-	return
-}
-
-
 
 // Read Kunde by KundeID
 func ReadKunde(id int) (kunde Kunde, err error) {

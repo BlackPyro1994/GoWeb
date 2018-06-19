@@ -6,7 +6,6 @@ import (
 	"strings"
 	"../controller"
 	"../model"
-	"fmt"
 )
 
 //--------------------------------------------------------------------
@@ -62,7 +61,6 @@ type Profiles struct {
 
 var funcMap = template.FuncMap{
 	"split": func(s string, index int) string {
-		// fmt.Println(s, index)
 		arr := strings.Split(s, ",")
 
 		if s == "" {
@@ -81,7 +79,7 @@ var funcMap = template.FuncMap{
 func index(w http.ResponseWriter, r *http.Request) {
 
 	p := menu{
-		Title:     "borgdir.media,index",
+		Title:     "borgdir.media, index",
 		Item1:     "Equipment,equipment",
 		Item2:     "Login,login",
 		Item3:     "",
@@ -126,10 +124,10 @@ func register(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
 
-		// controller.RegisterKunden(w, r)
-		userName := r.FormValue("KundenID")
-		fmt.Print(userName)
-		// index(w,r)
+		controller.RegisterKunden(w, r)
+		//userName := r.FormValue("KundenID")
+		//fmt.Print(userName)
+		index(w, r)
 	} else {
 
 		// REGISTER
@@ -245,17 +243,15 @@ func profile(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
+	ProfilesArr := controller.GetProfile(1)
+
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/profile.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 
-	ProfilesArr := controller.GetProfile(1)
-	fmt.Println(ProfilesArr)
-	data := Profiles{Items: ProfilesArr}
-
-	tmpl.ExecuteTemplate(w, "profile", data)
+	tmpl.ExecuteTemplate(w, "profile", Profiles{Items: ProfilesArr})
 
 }
 
@@ -340,7 +336,6 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 		// adminEditClients(w,r)
 		// userName := r.
 		// KundenID = r.FormValue("KundenID")
-		// fmt.Println(KundenID)
 
 		// adminEditClients(r.PostFormValue())
 
@@ -405,13 +400,15 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 		EmptySide: false,
 		Profile:   true}
 
+	ClientArr := controller.GetProfile(1)
+
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/adminEditClients.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
 
-	tmpl.ExecuteTemplate(w, "adminEditClients", Profiles{Items: controller.GetProfile(1)})
+	tmpl.ExecuteTemplate(w, "adminEditClients", Profiles{Items: ClientArr})
 
 }
 

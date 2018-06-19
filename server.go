@@ -9,16 +9,8 @@ import (
 
 func main() {
 
-	// config.InitSQLiteDB()
-	config.InitPostgresDB()
-
-	// controller.GetAllArtikelFromKunde(1)
-
-	// temp:=""
-
-	// println(rows)
-	// println(temp)
-	// println(err)
+	config.InitSQLiteDB()
+	//config.InitPostgresDB()
 
 	route.Handler()
 

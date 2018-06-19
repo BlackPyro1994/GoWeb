@@ -47,25 +47,23 @@ func GetAllUser() (kunden [] model.Kunde){
 	return
 }
 
-/*func GetKundenById() (kunde model.Kunde , err error) {
-	rows, err := config.Db.Query("select * from Kunde")
+func GetProfile(kunde_id int) (profiles []model.Profile) {
+	rows, err := config.Db.Query("select Kunde.KundeID,Kunde.Benutzername,Kunde.BildUrl,Kunde.Email,Kunde.Status from Kunde WHERE Kunde.KundeID = $1", kunde_id)
 
 	if err != nil {
 		return
 	}
-
 	for rows.Next() {
-		kunde := model.Kunde{}
-		err = rows.Scan(&kunde.KundeID,&kunde.Benutzername,&kunde.BildUrl,&kunde.Typ,&kunde.Status,&kunde.Email, &kunde.Passwort)
+		profile := model.Profile{}
+
+		err = rows.Scan(&profile.KundenID,&profile.Benutzername, &profile.BildURL, &profile.Mail, &profile.Status)
 
 		if err != nil {
 			return
 		}
 
-		fmt.Println(kunden)
-		kunden = append(kunden, kunde)
+		profiles = append(profiles, profile)
 	}
 	rows.Close()
 	return
 }
-*/

@@ -76,7 +76,8 @@
         </div>
         <div class="col-md-1 centered-text">
             <form class="form" role="form" onsubmit="return validateForm()" method="POST">
-                <button type="button" name="KundenID" value="{{.KundenID}}"class="btn btn-default bg-dark fa-button">
+                <button type="submit" class="btn btn-default bg-dark fa-button">
+                    <input type="hidden" name="KundenID" id="custId" name="custId" value="{{.KundenID}}">
                     <i class="fas fa-pencil-alt text-white"></i>
                 </button>
             </form>

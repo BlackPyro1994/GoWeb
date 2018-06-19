@@ -9,7 +9,8 @@ import (
 
 func main() {
 
-	config.InitSQLiteDB()
+	// config.InitSQLiteDB()
+	config.InitPostgresDB()
 
 	// controller.GetAllArtikelFromKunde(1)
 

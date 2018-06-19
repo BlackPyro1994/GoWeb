@@ -5,7 +5,7 @@
     <br>
     <div class="row">
         <div class="col">
-            Status: <span class="active">aktiv</span>
+            Status: <span class="active">{{.Status}}</span>
         </div>
     </div>
     <div class="row my-3">
@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="user">Benutzername:</label>
-                        <input type="text" class="form-control" id="user">
+                        <input type="text" class="form-control" name="user" value="{{.Benutzername}}">
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="mail">E-Mail:</label>
-                        <input type="text" class="form-control" id="mail">
+                        <input type="text" class="form-control" name="mail" value="{{.Mail}}">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="npsw">Neues Passwort:</label>
-                        <input type="password" class="form-control" id="npsw">
+                        <input type="password" class="form-control" name="npsw">
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="npsw">Neues Passwort wiederholen:</label>
-                        <input type="password" class="form-control" id="npsw">
+                        <input type="password" class="form-control" name="npswr">
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 Profilbild
             </div>
             <div class="d-flex flex-column">
-                <img class="img-fluid" src="//placehold.it/600x400?text=Profilbild" alt="profilbild">
+                <img class="img-fluid" src="/static/images/{{.BildURL}}" alt="profilbild">
             </div>
             <div class="d-flex flex-column my-2 text-right">
                 <form action="#"><input type="submit" class="btn button-startpage" value="Profilbild ändern"/></form>

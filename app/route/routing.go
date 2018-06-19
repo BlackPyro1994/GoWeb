@@ -29,27 +29,33 @@ type Clients struct {
 }
 
 type client struct {
-	BildUrl      string
-	Benutzername string
-	KundenID     int
-	Typ          string
-	Bezeichnungen  []Bez
-	Status       string
+	BildUrl       string
+	Benutzername  string
+	KundenID      int
+	Typ           string
+	Bezeichnungen []Bez
+	Status        string
 }
 
 type Bez struct {
 	Bezeichnung string
 }
 
-
 type MyEquipment struct {
 	Items []model.MyEquipment
 }
+
 type AdminEquipments struct {
 	Items []model.AdminEquipments
 }
+
 type Equipment struct {
-	Items []model.Equipment
+	Kategorien []string
+	Items      []model.Equipment
+}
+
+type Profiles struct {
+	Items []model.Profile
 }
 
 //--------------------------------------------------------------------
@@ -119,7 +125,10 @@ func login(w http.ResponseWriter, r *http.Request) {
 func register(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
-		controller.RegisterKunden(w, r)
+
+		// controller.RegisterKunden(w, r)
+		userName := r.FormValue("KundenID")
+		fmt.Print(userName)
 		// index(w,r)
 	} else {
 
@@ -159,14 +168,20 @@ func equipment(w http.ResponseWriter, r *http.Request) {
 
 	EquipmentArr := controller.GetEquipment()
 
-	fmt.Print(EquipmentArr)
+	// KategorieArr := []string{"hallo","bubu","chingchong","donald"}
 
 	tmpl := template.Must(template.New("main").Funcs(funcMap).ParseFiles("template/equipment.html", "template/header.html", "template/layout.html"))
 
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "equipment", Equipment{Items:EquipmentArr})
+	tmpl.ExecuteTemplate(w, "equipment", Equipment{Kategorien: []string{"Kameras", "Mikrofone", "Monitore", "Beleuchtung"}, Items: EquipmentArr})
+
+	// Info := make(map[string]string)
+	// Info["test"] = "About Page"
+
+	// tmpl.ExecuteTemplate(w, "equipment", EquipmentArr)
+	// tmpl.ExecuteTemplate(w, "equipment", map[string]interface{}{"mymap": map[string]string{"key": "value"}})
 
 }
 
@@ -235,7 +250,12 @@ func profile(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "profile", p)
+
+	ProfilesArr := controller.GetProfile(1)
+	fmt.Println(ProfilesArr)
+	data := Profiles{Items: ProfilesArr}
+
+	tmpl.ExecuteTemplate(w, "profile", data)
 
 }
 
@@ -319,6 +339,11 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		// adminEditClients(w,r)
 		// userName := r.
+		// KundenID = r.FormValue("KundenID")
+		// fmt.Println(KundenID)
+
+		// adminEditClients(r.PostFormValue())
+
 	} else {
 
 		p := menu{
@@ -343,7 +368,7 @@ func adminClients(w http.ResponseWriter, r *http.Request) {
 
 			artikelFromUser := controller.GetAllBezeichnungenFromKundenArtikel(element.KundeID)
 
-			var EquipmentString= []Bez{}
+			var EquipmentString = []Bez{}
 
 			for _, element := range artikelFromUser {
 
@@ -385,7 +410,8 @@ func adminEditClients(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "main", p)
 	tmpl.ExecuteTemplate(w, "layout", p)
 	tmpl.ExecuteTemplate(w, "header", p)
-	tmpl.ExecuteTemplate(w, "adminEditClients", p)
+
+	tmpl.ExecuteTemplate(w, "adminEditClients", Profiles{Items: controller.GetProfile(1)})
 
 }
 
@@ -398,7 +424,7 @@ func Handler() {
 	http.HandleFunc("/admin/equipment", adminEquipment)
 	http.HandleFunc("/admin/add", adminAddEquipment)
 	http.HandleFunc("/admin/clients", adminClients)
-	http.HandleFunc("/admin/edit-client", adminEditClients)
+	http.HandleFunc("/admin/edit-clients", adminEditClients)
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/equipment", equipment)
 	http.HandleFunc("/myequipment", myequipment)

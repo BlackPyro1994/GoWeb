@@ -24,25 +24,25 @@
             <a href="/{{split .Item3 1}}">{{split .Item3 0}}</a>
         </div>
         {{if .Basket}}
-            <div class="p-2 align-self-baseline">
-                <i class="fas fa-shopping-cart fa-lg"></i>
+            <div class="ml-5 align-self-baseline cart-icon-small">
+                <i class="fas fa-shopping-cart"></i>
             </div>
         {{end}}
         {{if .EmptySide}}
         {{else}}
             {{if .Profile}}
-                <div class="p-2 ml-auto align-self-center">
-                    <div class="p-2">
+                <div class="ml-auto align-self-center">
+                    <div class="mr-2 mt-3">
                         <a href="/profile">{{.Name}}</a>
                         <p class="text-right user">{{.Type}}</p>
                     </div>
                 </div>
-                <div class="p-2 ml-0 align-self-center user-icon">
-                    <a href="/profile"><i class="fas fa-user-circle fa-lg"></i></a>
+                <div class="mr-5 ml-0 align-self-center user-icon">
+                    <a href="/profile"><i class="fas fa-user-circle"></i></a>
                 </div>
             {{else}}
-                <div class="p-2 ml-auto align-self-center user-icon">
-                    <a href="/warenkorb"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                <div class="mr-5 ml-auto align-self-center cart-icon">
+                    <a href="/warenkorb"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             {{end}}
         {{end}}

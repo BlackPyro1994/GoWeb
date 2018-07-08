@@ -1,7 +1,5 @@
 .bottom-border {
-    border-bottom-style: solid;
-    border-width: 1pt;
-    padding-bottom: 0%;
+    border-bottom: black solid 1px;
 }
 
 img {

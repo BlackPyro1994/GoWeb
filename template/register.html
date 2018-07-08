@@ -1,48 +1,47 @@
 {{define "register"}}
-<div class="container mt-5">
+<div class="container mid-content">
     <div class="row text-center">
         <div class="col big-bold-text">
             Noch kein Kunde bei uns ?
         </div>
     </div>
-
-    <form class="form" role="form" onsubmit="return validateForm()" method="POST">
-        <div class="row justify-content-center mid-content">
-            <div class="col-md-6">
-                <div class="form-group">
+    <form class="form" role="form" method="POST">
+        <div class="row justify-content-center mt-5">
+            <div class="col-4">
+                <div class="form-group text-left">
                     <label for="user">Benutzername:</label>
-                    <input type="text" class="form-control" name="user" id="user">
+                    <input type="text" class="form-control" name="user" id="user" autofocus onkeyup="checkRegister();">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
+            <div class="col-4">
+                <div class="form-group text-left">
                     <label for="mail">E-Mail:</label>
-                    <input type="text" class="form-control" name="mail" id="mail">
+                    <input type="text" class="form-control" name="mail" id="mail" onkeyup="checkRegister();">
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="form-group">
+            <div class="col-4">
+                <div class="form-group text-left">
                     <label for="psw">Passwort:</label>
-                    <input type="password" class="form-control" name="psw" id="psw">
+                    <input type="password" class="form-control" name="psw" id="psw" onkeyup="checkRegister();">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="psw">Passwort wiederholen:</label>
-                    <input type="password" class="form-control" name="pswr" id="pswr">
+            <div class="col-4">
+                <div class="form-group text-left">
+                    <label for="psw">Passwort wiederholen:
+                        <span class="ml-5" id="message">
+                        </span>
+                    </label>
+                    <input type="password" class="form-control" name="pswr" id="pswr" onkeyup="checkRegister();">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col text-center mt-3">
-                <!--<form action="#"><input type="submit" class="btn button-startpage" value="Registrieren"/></form>-->
-                <button type="submit" class="btn button-startpage" id="btnLogin">Registrieren</button>
-
+        <div class="row justify-content-center mt-2">
+            <div class="col-2 text-center">
+                <button class="btn  btn-block button-startpage" id="btnRegister" disabled>Registrieren</button>
             </div>
         </div>
     </form>
-
 </div>
 {{end}}

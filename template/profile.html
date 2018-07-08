@@ -1,25 +1,25 @@
 {{define "profile"}}
-<div class="container mt-5">
+<div class="container mt-3">
     <h4 class="cursiv-text">Profil bearbeiten</h4>
-
-    {{range .Items}}
-        <div class="row">
-            <div class="col">
-                Status: <span class="active">{{.Status}}</span>
-            </div>
+{{range .Items}}
+    <div class="row">
+        <div class="col">
+            Status: <span class="active">{{.Status}}</span>
         </div>
-        <div class="row my-3">
-            <div class="col-md-8">
+    </div>
+    <form class="form" role="form" method="POST" enctype="multipart/form-data">
+        <div class="row mt-2">
+            <div class="col-4">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="user">Benutzername:</label>
-                            <input type="text" class="form-control" name="user" value="{{.Benutzername}}">
+                            <input type="text" class="form-control" name="user" value="{{.Name}}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="mail">E-Mail:</label>
                             <input type="text" class="form-control" name="mail" value="{{.Mail}}">
@@ -27,43 +27,53 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="npsw">Neues Passwort:</label>
-                            <input type="password" class="form-control" name="npsw">
+                            <input type="password" class="form-control" name="psw" id="psw" onkeyup="checkProfile();">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col">
                         <div class="form-group">
-                            <label for="npsw">Neues Passwort wiederholen:</label>
-                            <input type="password" class="form-control" name="npswr">
+                            <label for="npsw">Neues Passwort wiederholen:
+                                <span class="ml-1" id="message"></span>
+                            </label>
+                            <input type="password" class="form-control" name="pswr" id="pswr" onkeyup="checkProfile();">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form action="#"><input type="submit" class="btn button-startpage" value="Änderungen Speichern"/>
-                        </form>
+                        <button type="submit" class="btn button-startpage" id="btnSpeichern">Änderung Speichern</button>
                     </div>
-                    <div class="col">
-                        <form action="#"><input type="submit" class="btn button-loeschen" value="Konto löschen"/></form>
-                    </div>
+                    <!-- Konto Löschen Button -->
+                    <form>
+                        <div class="col">
+                            <a href="/delete/profile/{{.UserID}}">
+                                <button class="btn button-loeschen" type="button">Konto Löschen</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-3 text-right">
+            <div class="offset-5 col-3 text-right">
                 <div class="d-flex flex-column">
                     Profilbild
                 </div>
-                <div class="d-flex flex-column">
-                    <img class="img-fluid" style="height: 100px; width: 600px" src="/static/images/{{.BildURL}}" alt="profilbild">
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid" style="height: 200px; width: 300px" src="/static/images/{{.BildURL}}"
+                             alt="profilbild">
+                    </div>
                 </div>
-                <div class="d-flex flex-column my-2 text-right">
-                    <form action="#"><input type="submit" class="btn button-startpage" value="Profilbild ändern"/></form>
+                <div class="mt-2">
+                    <input style="width: 250px" type="file" name="img">
                 </div>
             </div>
         </div>
-    {{end}}
+    </form>
+{{end}}
 </div>
 {{end}}

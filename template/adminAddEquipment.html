@@ -1,40 +1,38 @@
 {{define "adminAddEquipment"}}
-
-<div class="container mt-5">
-
+<div class="container mt-3">
     <h4 class="">Equipment hinzufügen</h4>
-
-    <br>
-
-    <form class="form" role="form" onsubmit="return validateForm()" method="POST">
-        <div class="row my-3">
-            <div class="col-md-8">
+    <form class="form mt-4" role="form" method="POST" enctype="multipart/form-data">
+        <div class="row mt-2">
+            <div class="col-8">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="bz">Bezeichnung</label>
                             <input type="text" class="form-control" name="bz" id="bz">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="form-group text-right">
                             <label for="kat">Kategorie</label>
-                            <select class="form-control search-bar" name="kat" id="kat">
-                                <option>Kameras</option>
-                                <option>Mikrofone</option>
-                                <option>Monitore</option>
+                            <select class="form-control" name="kat" id="kat">
+                                <option>Alle</option>
+                                <option>Kamera</option>
+                                <option>Kommunikation</option>
+                                <option>Computer Zubehör</option>
+                                <option>Kabel</option>
+                                <option>Audiosysteme</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="invNum">Inventar-Nummer</label>
                             <input type="text" class="form-control" name="invNum" id="invNum">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="form-group text-right">
                             <label for="lgo">Lagerort</label>
                             <input type="text" class="form-control" name="lgo" id="lgo">
@@ -42,25 +40,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="bz">Inhalt</label>
                             <input type="text" class="form-control" name="inhalt" id="inhalt">
                         </div>
                     </div>
-                    <div class="col-md-3 text-right">
-                        <label for="anz">Anzahl</label>
-                        <div class="input-group text-right">
-                            <input type="text" class="form-control" name="anz" id="anz">
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default" type="button"><i class="fas fa-caret-up"></i></button>
-                                <button class="btn btn-default" type="button"><i class="fas fa-caret-down"></i></button>
-                            </div>
+                    <div class="col-3">
+                        <div class="form-group text-right">
+                            <label for="anz">Anzahl</label>
+                            <input type="text" class="form-control text-right" name="anz" id="anz">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="hinweis">Hinweise für den Benutzer</label>
                             <textarea class="form-control" name="hinweis" id="hinweis" rows="2"></textarea>
@@ -69,20 +63,20 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <!--<form action="#"><input type="submit" class="btn button-startpage" value="Speichern"/></form>-->
                         <button type="submit" class="btn button-startpage" id="btnLogin">Speichern</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 text-right">
+            <div class="offset-1 col-3 text-right">
                 <div class="d-flex flex-column">
                     Profilbild
                 </div>
                 <div class="d-flex flex-column">
-                    <img class="img-fluid" name="bildurl" src="//placehold.it/600x400?text=Profilbild" alt="profilbild">
+                    <img class="img-fluid" name="bildurl" src="//placehold.it/300x200?text=Profilbild" alt="profilbild"
+                         style="height: 200px; width: 300px">
                 </div>
                 <div class="d-flex flex-column my-2 text-right">
-                    <form action="#"><input type="submit" class="btn button-startpage" value="Profilbild ändern"/></form>
+                    <input style="width: 250px" type="file" name="img">
                 </div>
             </div>
         </div>
